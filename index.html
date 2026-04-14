@@ -1,19 +1,170 @@
-</svg>
-      <div><div style="font-weight:700;font-size:0.88rem;color:var(--white)">IG</div><div style="font-size:0.72rem;color:var(--white-40)">Instagram</div></div>
-    </a>
-    <!-- Facebook -->
-    <a href="#" class="social-btn">
-      <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/></svg>
-      <div><div style="font-weight:700;font-size:0.88rem;color:var(--white)">FB</div><div style="font-size:0.72rem;color:var(--white-40)">Facebook</div></div>
-    </a>
-    <!-- TikTok -->
-    <a href="#" class="social-btn">
-      <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="#010101"/><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.75a8.18 8.18 0 004.84 1.55V6.87a4.85 4.85 0 01-1.07-.18z" fill="white"/></svg>
-      <div><div style="font-weight:700;font-size:0.88rem;color:var(--white)">TikTok</div><div style="font-size:0.72rem;color:var(--white-40)">éç»­å½±é³</div></div>
-    </a>
-    <!-- YouTube -->
-    <a href="#" class="social-btn">
-      <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.016 3amp(3rem, 8vw, 6rem);
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>漢忻潛能培訓學院 | Allen 教練 — 自我價值升級・釋放無限潛能</title>
+  <meta name="description" content="AI名單引擎 × 精準成交系統™ | 漢忻潛能培訓學院 | 12年實戰 | 3000+學員 | 保險・直銷・講師・創業者首選">
+  <meta property="og:title" content="漢忻潛能培訓學院 | Allen 教練">
+  <meta property="og:description" content="12年濃縮成一套系統。AI × 銷售 × 個人品牌，幫你突破業績天花板。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06060a;
+      --bg-2: #0d0d16;
+      --bg-3: #111120;
+      --border: rgba(212,175,55,0.12);
+      --border-bright: rgba(212,175,55,0.35);
+      --gold-1: #f5e27a;
+      --gold-2: #c8921a;
+      --gold-3: #f0c040;
+      --gold-4: #9a6e10;
+      --white: #f5f2ed;
+      --white-70: rgba(245,242,237,0.7);
+      --white-40: rgba(245,242,237,0.4);
+      --serif: 'Noto Serif TC', 'Georgia', serif;
+      --sans: 'Noto Sans TC', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--sans);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── GOLD GRADIENT TEXT ─── */
+    .gold {
+      background: linear-gradient(135deg, var(--gold-1) 0%, var(--gold-2) 40%, var(--gold-3) 70%, var(--gold-4) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── ANIMATED ORBS ─── */
+    .orbs {
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(100px); opacity: 0.12;
+    }
+    .orb-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #c8921a, transparent);
+      top: -200px; left: -150px;
+      animation: float1 18s ease-in-out infinite;
+    }
+    .orb-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, #4a2080, transparent);
+      top: 40%; right: -200px;
+      animation: float2 22s ease-in-out infinite;
+    }
+    .orb-3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #c8921a, transparent);
+      bottom: -100px; left: 40%;
+      animation: float3 15s ease-in-out infinite;
+    }
+    @keyframes float1 {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(80px, 120px) scale(1.15); }
+    }
+    @keyframes float2 {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(-60px, -80px) scale(1.1); }
+    }
+    @keyframes float3 {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(-40px, -60px) scale(1.05); }
+    }
+
+    /* ─── NOISE TEXTURE ─── */
+    body::before {
+      content: '';
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025; pointer-events: none; z-index: 0;
+    }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed; top:0; width:100%; z-index: 1000;
+      background: rgba(6,6,10,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 0;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 1.3rem;
+      background: linear-gradient(135deg, var(--gold-1), var(--gold-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--white-70);
+      font-size: 0.9rem; font-weight: 500;
+      transition: color 0.25s;
+      letter-spacing: 0.03em;
+    }
+    .nav-links a:hover { color: var(--gold-3); }
+    .nav-cta {
+      padding: 0.6rem 1.5rem;
+      background: linear-gradient(135deg, var(--gold-2), var(--gold-1));
+      color: #06060a !important;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      font-size: 0.85rem !important;
+      transition: all 0.3s !important;
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,146,26,0.4); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 10rem 2rem 6rem;
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-3);
+      margin-bottom: 2rem;
+      opacity: 0.85;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: clamp(3rem, 8vw, 6rem);
       line-height: 1.08;
       letter-spacing: -0.02em;
       margin-bottom: 1.8rem;
@@ -135,14 +286,14 @@
       line-height: 1.4;
     }
 
-    /* âââ DIVIDER âââ */
+    /* ─── DIVIDER ─── */
     .gold-line {
       width: 100%; height: 1px;
       background: linear-gradient(90deg, transparent, var(--gold-2), transparent);
       position: relative; z-index: 1;
     }
 
-    /* âââ SECTION BASE âââ */
+    /* ─── SECTION BASE ─── */
     section { position: relative; z-index: 1; }
     .section-wrap {
       max-width: 1200px; margin: 0 auto;
@@ -175,7 +326,7 @@
       font-weight: 300;
     }
 
-    /* âââ BRAND DECLARATION âââ */
+    /* ─── BRAND DECLARATION ─── */
     .brand-decl {
       background: var(--bg-2);
       border-top: 1px solid var(--border);
@@ -223,7 +374,7 @@
       letter-spacing: 0.05em;
     }
 
-    /* âââ 9 COURSES GRID âââ */
+    /* ─── 9 COURSES GRID ─── */
     .courses-bg { background: var(--bg); }
     .grid-9 {
       display: grid;
@@ -305,7 +456,7 @@
       background-clip: text;
     }
 
-    /* âââ FLAGSHIP PRODUCT âââ */
+    /* ─── FLAGSHIP PRODUCT ─── */
     .flagship-bg {
       background: var(--bg-2);
       border-top: 1px solid var(--border);
@@ -452,7 +603,7 @@
       font-size: 1.05rem;
     }
 
-    /* âââ ABOUT ALLEN âââ */
+    /* ─── ABOUT ALLEN ─── */
     .about-bg { background: var(--bg); }
     .about-grid {
       display: grid;
@@ -566,7 +717,7 @@
       margin: 1.5rem 0;
     }
 
-    /* âââ TESTIMONIALS âââ */
+    /* ─── TESTIMONIALS ─── */
     .testimonials-bg {
       background: var(--bg-2);
       border-top: 1px solid var(--border);
@@ -642,7 +793,7 @@
       margin-top: 0.1rem;
     }
 
-    /* âââ FAQ âââ */
+    /* ─── FAQ ─── */
     .faq-bg { background: var(--bg); }
     .faq-list { max-width: 800px; margin: 0 auto; }
     .faq-item {
@@ -690,7 +841,7 @@
       font-weight: 300;
     }
 
-    /* âââ FINAL CTA âââ */
+    /* ─── FINAL CTA ─── */
     .final-cta {
       background: var(--bg-2);
       border-top: 1px solid var(--border);
@@ -725,7 +876,7 @@
       color: var(--white-40);
     }
 
-    /* âââ FOOTER âââ */
+    /* ─── FOOTER ─── */
     footer {
       background: #030306;
       border-top: 1px solid var(--border);
@@ -798,7 +949,7 @@
       }
     }
 
-    /* âââ REVEAL ANIMATIONS âââ */
+    /* ─── REVEAL ANIMATIONS ─── */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -812,7 +963,7 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
-    /* âââ TICKER âââ */
+    /* ─── TICKER ─── */
     .ticker-wrap {
       background: rgba(200,146,26,0.06);
       border-top: 1px solid var(--border);
@@ -842,7 +993,7 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* âââ MOBILE RESPONSIVE âââ */
+    /* ─── MOBILE RESPONSIVE ─── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hero { padding: 8rem 1.5rem 5rem; }
@@ -871,14 +1022,14 @@
 <!-- Navigation -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">æ¼¢å¿»æ½è½å¹è¨å­¸é¢</a>
+    <a href="index.html" class="nav-logo">漢忻潛能培訓學院</a>
     <ul class="nav-links">
-      <li><a href="#courses">èª²ç¨</a></li>
-      <li><a href="#flagship">æè¦ç³»çµ±</a></li>
-      <li><a href="#about">éæ¼Allen</a></li>
-      <li><a href="#testimonials">å­¸å¡è¦è­</a></li>
-      <li><a href="sales.html">AIåå®å¼æ</a></li>
-      <li><a href="https://cal.com/allen5280/1v1" class="nav-cta">é ç´åè²»è«®è©¢</a></li>
+      <li><a href="#courses">課程</a></li>
+      <li><a href="#flagship">旗艦系統</a></li>
+      <li><a href="#about">關於Allen</a></li>
+      <li><a href="#testimonials">學員見證</a></li>
+      <li><a href="sales.html">AI名單引擎</a></li>
+      <li><a href="https://cal.com/allen5280/1v1" class="nav-cta">預約免費諮詢</a></li>
     </ul>
   </div>
 </nav>
@@ -886,50 +1037,50 @@
 <!-- Ticker -->
 <div class="ticker-wrap" style="margin-top: 64px;">
   <div class="ticker-track">
-    <span class="ticker-item">â¦ 12å¹´å¯¦æ°æ¿ç¸®</span><span class="ticker-dot">Â·</span>
-    <span class="ticker-item">1,000+ ä½å¹è¨å­¸å¡</span><span class="ticker-dot">Â·</span>
-    <span class="ticker-item">50è¬+ å¨ç¶²ç²çµ²</span><span class="ticker-dot">Â·</span>
-    <span class="ticker-item">AI Ã é·å® Ã åäººåç</span><span class="ticker-dot">Â·</span>
-    <span class="ticker-item">ä¿éª Â· ç´é· Â· è¬å¸« Â· åµæ¥­èé¦é¸</span><span class="ticker-dot">Â·</span>
-    <span class="ticker-item">4/30 ç·ä¸ç è¨æ åé¡æé</span><span class="ticker-dot">Â·</span>
-    <span class="ticker-item">â¦ 12å¹´å¯¦æ°æ¿ç¸®</span><span class="ticker-dot">Â·</span>
-    <span class="ticker-item">1,000+ ä½å¹è¨å­¸å¡</span><span class="ticker-dot">Â·</span>
-    <span class="ticker-item">50è¬+ å¨ç¶²ç²çµ²</span><span class="ticker-dot">Â·</span>
-    <span class="ticker-item">AI Ã é·å® Ã åäººåç</span><span class="ticker-dot">Â·</span>
-    <span class="ticker-item">ä¿éª Â· ç´é· Â· è¬å¸« Â· åµæ¥­èé¦é¸</span><span class="ticker-dot">Â·</span>
-    <span class="ticker-item">4/30 ç·ä¸ç è¨æ åé¡æé</span><span class="ticker-dot">Â·</span>
+    <span class="ticker-item">✦ 12年實戰濃縮</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">1,000+ 位培訓學員</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">50萬+ 全網粉絲</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">AI × 銷售 × 個人品牌</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">保險 · 直銷 · 講師 · 創業者首選</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">4/30 線上研討會 名額有限</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">✦ 12年實戰濃縮</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">1,000+ 位培訓學員</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">50萬+ 全網粉絲</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">AI × 銷售 × 個人品牌</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">保險 · 直銷 · 講師 · 創業者首選</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">4/30 線上研討會 名額有限</span><span class="ticker-dot">·</span>
   </div>
 </div>
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-eyebrow">æ¼¢å¿»æ½è½å¹è¨å­¸é¢ Ã Allen æç·´</div>
+  <div class="hero-eyebrow">漢忻潛能培訓學院 × Allen 教練</div>
   <h1>
-    èªæå¹å¼åç´
-    <span class="gold">éæ¾ç¡éæ½è½</span>
+    自我價值升級
+    <span class="gold">釋放無限潛能</span>
   </h1>
-  <p class="hero-sub" style="font-family:var(--serif);font-weight:900;font-size:clamp(1.1rem,2.5vw,1.5rem);letter-spacing:0.02em;"><span class="gold">AI åå®å¼æ â ç²¾æºæäº¤ç³»çµ± ï¼ æ¥­åçé£æ¹ç¨å¼</span></p>
-  <p class="hero-tagline">12 å¹´å¯¦æ°æ·¬ç Â· è®æ¥­å 80% èªååçå®æ´ç³»çµ±ï¼å®æ´äº¤çµ¦ä½ </p>
+  <p class="hero-sub" style="font-family:var(--serif);font-weight:900;font-size:clamp(1.1rem,2.5vw,1.5rem);letter-spacing:0.02em;"><span class="gold">AI 名單引擎 ✖ 精準成交系統 ＝ 業務狂飆方程式</span></p>
+  <p class="hero-tagline">12 年實戰淬煉 · 讓業務 80% 自動化的完整系統，完整交給你</p>
   <div class="hero-ctas">
-    <a href="https://cal.com/allen5280/1v1" class="btn-primary">åè²»é ç´ 1v1 è¨ºè©¢</a>
-    <a href="sales.html" class="btn-outline">æ¥çæè¦èª²ç¨ â</a>
+    <a href="https://cal.com/allen5280/1v1" class="btn-primary">免費預約 1v1 診詢</a>
+    <a href="sales.html" class="btn-outline">查看旗艦課程 →</a>
   </div>
   <div class="stats-row">
     <div class="stat-item">
       <div class="stat-val"><span class="stat-num" data-target="12">0</span><span class="stat-suf">+</span></div>
-      <span class="stat-label">12 å¹´é å°æ¥­ååéå¯¦æ°ç¶é©</span>
+      <span class="stat-label">12 年領導業務團隊實戰經驗</span>
     </div>
     <div class="stat-item">
       <div class="stat-val"><span class="stat-num" data-target="1000">0</span><span class="stat-suf">+</span></div>
-      <span class="stat-label">ä½å¹è¨å­¸å¡</span>
+      <span class="stat-label">位培訓學員</span>
     </div>
     <div class="stat-item">
-      <div class="stat-val"><span class="stat-num">800</span><span class="stat-suf">è¬+</span></div>
-      <span class="stat-label">å¨ç¶²æµé</span>
+      <div class="stat-val"><span class="stat-num">800</span><span class="stat-suf">萬+</span></div>
+      <span class="stat-label">全網流量</span>
     </div>
     <div class="stat-item">
       <div class="stat-val"><span class="stat-num">2,300</span><span class="stat-suf">+</span></div>
-      <span class="stat-label">å ´æ¼è¬å¹è¨å ´æ¬¡</span>
+      <span class="stat-label">場演講培訓場次</span>
     </div>
   </div>
 </section>
@@ -939,23 +1090,23 @@
 <!-- Brand Declaration -->
 <section class="brand-decl">
   <div class="brand-decl-inner">
-    <div class="decl-label reveal">åçéhé­å®£è¨</div>
+    <div class="decl-label reveal">品牌靈魂宣言</div>
     <p class="decl-text reveal reveal-delay-1">
-      <span class="gold">ä»¤äººå®å®çåé</span><br>
-      å¯é ã»å®é »ã»å®å¿
+      <span class="gold">令人安定的力量</span><br>
+      可靠・定頻・安心
     </p>
     <p class="decl-desc reveal reveal-delay-2">
-      å¨éåè³è¨çç¸ãæ¹åæ··äºçæä»£ï¼<br>
-      ä½ éè¦çä¸æ¬å¤ç¥è­ï¼èæ¬ä¸å<strong style="color:var(--white)">è®ä½ å®å®çç³»çµ±</strong>ã<br>
-      Allen æç·´ç¨ 12 å¹´æ¿ç¸®çå¯¦æ°ç²¾è¯ï¼<br>
-      æè¤éç AIãé·å®ãåçåç¹çºç°¡ï¼è®ä½ ä¸æ­¥æ­¥èµ°åèªç±ã
+      在這個資訊爆炸、方向混亂的時代，<br>
+      你需要的不是更多知識，而是一個<strong style="color:var(--white)">讓你安定的系統</strong>。<br>
+      Allen 教練用 12 年濃縮的實戰精華，<br>
+      把複雜的 AI、銷售、品牌化繁為簡，讓你一步步走向自由。
     </p>
     <div class="decl-pillars reveal reveal-delay-3">
-      <span class="decl-pill">AI å·¥å·æ´å</span>
-      <span class="decl-pill">é·å®æäº¤ç³»çµ±</span>
-      <span class="decl-pill">åäººåçæé </span>
-      <span class="decl-pill">åå®å¼æèªåå</span>
-      <span class="decl-pill">åéè¤è£½é å°</span>
+      <span class="decl-pill">AI 工具整合</span>
+      <span class="decl-pill">銷售成交系統</span>
+      <span class="decl-pill">個人品牌打造</span>
+      <span class="decl-pill">名單引擎自動化</span>
+      <span class="decl-pill">團隊複製領導</span>
     </div>
   </div>
 </section>
@@ -965,72 +1116,72 @@
 <!-- 9 Courses -->
 <section id="courses" class="courses-bg">
   <div class="section-wrap">
-    <div class="section-eyebrow reveal">å®æ´æé·ç³»çµ±</div>
-    <h2 class="section-title reveal reveal-delay-1">9 å¤§æ ¸å¿èª²ç¨</h2>
-    <p class="section-sub reveal reveal-delay-2">æ¶µè AI å·¥å·ãé·å®ãåçãæè³ãèº«å¿éââå®æ´çåäººæé·æ¹ç¨å¼</p>
+    <div class="section-eyebrow reveal">完整成長系統</div>
+    <h2 class="section-title reveal reveal-delay-1">9 大核心課程</h2>
+    <p class="section-sub reveal reveal-delay-2">涵蓋 AI 工具、銷售、品牌、投資、身心靈——完整的個人成長方程式</p>
     <div class="grid-9 reveal">
       <div class="course-card">
         <span class="course-num">01</span>
-        <span class="course-icon">ð¤</span>
-        <h3>AI å·¥å·ä½¿ç¨</h3>
-        <p>ææ¡æåæ²¿ç AI å·¥å·ï¼è®ç³»çµ±å¹«ä½ å 80% çå·¥ä½ãæçæå 5 åï¼æ¥­ç¸¾èªååå¢ã</p>
-        <span class="course-tag">é«æç Â· èªåå</span>
+        <span class="course-icon">🤖</span>
+        <h3>AI 工具使用</h3>
+        <p>掌握最前沿的 AI 工具，讓系統幫你做 80% 的工作。效率提升 5 倍，業績自動倍增。</p>
+        <span class="course-tag">高效率 · 自動化</span>
       </div>
       <div class="course-card">
         <span class="course-num">02</span>
-        <span class="course-icon">ð±</span>
-        <h3>èªåªé«æé åäººåç</h3>
-        <p>å¾é¶æé åäºº IPï¼å»ºç«åªè³ªåå®å¼æãè®éçäººä¸»åæ¾ä¸ä½ ï¼èä¸æ¯ä½ å»è¿½å®¢æ¶ã</p>
-        <span class="course-tag">åäººåç Â· æµé</span>
+        <span class="course-icon">📱</span>
+        <h3>自媒體打造個人品牌</h3>
+        <p>從零打造個人 IP，建立優質名單引擎。讓陌生人主動找上你，而不是你去追客戶。</p>
+        <span class="course-tag">個人品牌 · 流量</span>
       </div>
       <div class="course-card">
         <span class="course-num">03</span>
-        <span class="course-icon">ð¯</span>
-        <h3>é·å®æäº¤æè¡</h3>
-        <p>12 å¹´å¯¦æ°èåçé·å®å¿æ³ï¼çªç ´æ¥­ç¸¾å¤©è±æ¿ãå¾å°è©±å°æäº¤ï¼æ¯ä¸æ­¥é½æç³»çµ±ã</p>
-        <span class="course-tag">æäº¤ Â· æ¥­ç¸¾</span>
+        <span class="course-icon">🎯</span>
+        <h3>銷售成交技術</h3>
+        <p>12 年實戰萃取的銷售心法，突破業績天花板。從對話到成交，每一步都有系統。</p>
+        <span class="course-tag">成交 · 業績</span>
       </div>
       <div class="course-card">
         <span class="course-num">04</span>
-        <span class="course-icon">ð</span>
-        <h3>å¬åè½ç§å</h3>
-        <p>æå¬åæµéå¼å°å°é«è³ªéç§åç¤¾ç¾¤ï¼æé å±¬æ¼$½ çéç¤¦æ± ï¼æçºè®ç¾ã</p>
-        <span class="course-tag">ç¤¾ç¾¤ Â· ç§å</span>
+        <span class="course-icon">🔄</span>
+        <h3>公域轉私域</h3>
+        <p>把公域流量引導到高質量私域社群，打造屬於你的金礦池，持續變現。</p>
+        <span class="course-tag">社群 · 私域</span>
       </div>
       <div class="course-card">
         <span class="course-num">05</span>
-        <span class="course-icon">ð¥</span>
-        <h3>äººéæºéèåéé å°</h3>
-        <p>å¾åäººè²¢ç»èå°çµç¹é å°äººï¼ææ¡å½±é¿åæºéï¼å¸¶åºé«æå·è¡çè¤è£½ååéã</p>
-        <span class="course-tag">é å°å Â· åé</span>
+        <span class="course-icon">👥</span>
+        <h3>人際溝通與團隊領導</h3>
+        <p>從個人貢獻者到組織領導人，掌握影響力溝通，帶出高效執行的複製型團隊。</p>
+        <span class="course-tag">領導力 · 團隊</span>
       </div>
       <div class="course-card">
         <span class="course-num">06</span>
-        <span class="course-icon">ð¤</span>
-        <h3>ç°¡å ±æè¡èé·å®æ¼è¬</h3>
-        <p>èªªè©± = è®ç¾çè½åãè®æ¯ä¸å ´ç°¡å ±é½ç¢çè¨å®ï¼æ¯ä¸æ¬¡æ¼è¬é½å¸¶ä¾æ°çæ¥­ç¸¾ã</p>
-        <span class="course-tag">æ¼è¬ Â· è®ç¾</span>
+        <span class="course-icon">🎤</span>
+        <h3>簡報技術與銷售演講</h3>
+        <p>說話 = 變現的能力。讓每一場簡報都產生訂單，每一次演講都帶來新的業績。</p>
+        <span class="course-tag">演講 · 變現</span>
       </div>
       <div class="course-card">
         <span class="course-num">07</span>
-        <span class="course-icon">ð</span>
-        <h3>æ¥µè´ç°¡åæè³äº¤æ</h3>
-        <p>è²¡åèªç±çç¬¬äºæ¢è·¯ãå»é¤è¤éï¼æä½æ¬è³ªï¼ç¨æç°¡å®çéè¼¯ååºææ­£ç¢ºçæ±ºç­ã</p>
-        <span class="course-tag">æè³ Â· è²¡å</span>
+        <span class="course-icon">📈</span>
+        <h3>極致簡化投資交易</h3>
+        <p>財務自由的第二條路。去除複雜，抓住本質，用最簡單的邏輯做出最正確的決策。</p>
+        <span class="course-tag">投資 · 財務</span>
       </div>
       <div class="course-card">
         <span class="course-num">08</span>
-        <span class="course-icon">ð§</span>
-        <h3>èº«å¿éå¥æ³ã»æåè½é</h3>
-        <p>æåçåºç¤æ¯å§å¨è½éãééå¥æ³ãééè½éæåï¼å¾æ ¹æ¬å±¤é¢è®ä½ çå¸å¼ååå¢ã</p>
-        <span class="course-tag">è½é Â· éé</span>
+        <span class="course-icon">🧘</span>
+        <h3>身心靈冥想・提升能量</h3>
+        <p>成功的基礎是內在能量。通過冥想、開運能量提升，從根本層面讓你的吸引力倍增。</p>
+        <span class="course-tag">能量 · 開運</span>
       </div>
       <div class="course-card featured">
         <span class="course-num">09</span>
-        <span class="course-icon">ðª</span>
-        <h3>æ¥µè´é«æè¦ºéè¨ç«â¢</h3>
-        <p>æ¸éãå¢èãèº«æç®¡çãèªä¿¡è¦ºéãç¶ä½ çèº«é«éå°å·å³°ï¼ä½ çäººçä¹æå¨é¢åç´ã</p>
-        <span class="course-tag" style="color:var(--gold-1); border-color:var(--gold-2)">â¦ ç¬¬ 9 æ ¼ Â· æè¦</span>
+        <span class="course-icon">💪</span>
+        <h3>極致體態覺醒計畫™</h3>
+        <p>減重、增肌、身材管理、自信覺醒。當你的身體達到巔峰，你的人生也會全面升級。</p>
+        <span class="course-tag" style="color:var(--gold-1); border-color:var(--gold-2)">✦ 第 9 格 · 旗艦</span>
       </div>
     </div>
   </div>
@@ -1042,98 +1193,98 @@
 <section id="flagship" class="flagship-bg">
   <div class="flagship-inner">
     <div class="flagship-header">
-      <div class="flagship-badge reveal">â¦ é ç´æè¦æ¹æ¡</div>
+      <div class="flagship-badge reveal">✦ 頂級旗艦方案</div>
       <h2 class="flagship-title reveal reveal-delay-1">
-        <span class="gold">AI åå®å¼æ â ç²¾æºæäº¤ç³»çµ±â¢</span>
+        <span class="gold">AI 名單引擎 ✖ 精準成交系統™</span>
       </h2>
       <p class="flagship-desc reveal reveal-delay-2">
-        ä¸åªæ¯èª²ç¨ââéæ¯ä¸å¥è®ä½ çæ¥­å 80% èªååéä½çå®æ´ç³»çµ±ã<br>
-        å¾éçäººéç¼å°ç²¾æºæäº¤ï¼å¨ç¨ AI è¼å©ï¼æéèªç±å¾éè£¡éå§ã
+        不只是課程——這是一套讓你的業務 80% 自動化運作的完整系統。<br>
+        從陌生人開發到精準成交，全程 AI 輔助，時間自由從這裡開始。
       </p>
       <div class="audience-chips reveal reveal-delay-3">
-        <span class="audience-chip">ä¿éªæ¥­å</span>
-        <span class="audience-chip">ç´é·æ¥­å</span>
-        <span class="audience-chip">ç·ä¸èª²ç¨è¬å¸«</span>
-        <span class="audience-chip">èªç±å·¥ä½è</span>
-        <span class="audience-chip">èé/ä¸»ç®¡</span>
-        <span class="audience-chip">çµç¹é å°äºº</span>
+        <span class="audience-chip">保險業務</span>
+        <span class="audience-chip">直銷業務</span>
+        <span class="audience-chip">線上課程講師</span>
+        <span class="audience-chip">自由工作者</span>
+        <span class="audience-chip">老闆/主管</span>
+        <span class="audience-chip">組織領導人</span>
       </div>
     </div>
     <div class="flagship-grid reveal">
       <div class="flagship-pillars">
-        <h4>4 å¤§æ ¸å¿åè½</h4>
+        <h4>4 大核心功能</h4>
         <div class="pillar-item">
           <div class="pillar-num">1</div>
           <div class="pillar-content">
-            <h5>éç¼èè·é²èªåå</h5>
-            <p>å®ä¸è¼¸å¥ï¼ç³»çµ±æçºè¼¸åºãAI èªåéç¼éçåå®ï¼LINE æ©å¨äººèªåè·é²ï¼80% çå·¥ä½é ç³»çµ±å®æï¼ä½ åªéåééµæ±ºç­ã</p>
+            <h5>開發與跟進自動化</h5>
+            <p>單一輸入，系統持續輸出。AI 自動開發陌生名單，LINE 機器人自動跟進，80% 的工作靠系統完成，你只需做關鍵決策。</p>
           </div>
         </div>
         <div class="pillar-item">
           <div class="pillar-num">2</div>
           <div class="pillar-content">
-            <h5>åäººåçèåå®ç²å</h5>
-            <p>AI å·¥å· + èªåªé«ç­ç¥ + åå®ç£éµä¸ä½ä¸é«ãå»ºç«åªè³ªç§åæµéï¼è®å°çäººä¸»åæ¾ä½ ï¼èä¸æ¯ä½ å¤©å¤©è¿½äººã</p>
+            <h5>個人品牌與名單獲取</h5>
+            <p>AI 工具 + 自媒體策略 + 名單磁鐵三位一體。建立優質私域流量，讓對的人主動找你，而不是你天天追人。</p>
           </div>
         </div>
         <div class="pillar-item">
           <div class="pillar-num">3</div>
           <div class="pillar-content">
-            <h5>é·å®è AI æç·´ç³»çµ±</h5>
-            <p>å®æ´è©±è¡æ¨¡æ¿ + AI å³æè¼å©ãæ¯ä¸åå°è©±å ´æ¯é½ææä½³åææ¹æ¡ï¼æäº¤çæå 3-5 åä¸æ¯å¤¢ã</p>
+            <h5>銷售與 AI 教練系統</h5>
+            <p>完整話術模板 + AI 即時輔助。每一個對話場景都有最佳回應方案，成交率提升 3-5 倍不是夢。</p>
           </div>
         </div>
         <div class="pillar-item">
           <div class="pillar-num">4</div>
           <div class="pillar-content">
-            <h5>æ¸æå½æ´èæè½åªå</h5>
-            <p>Notion + AI æè¦ + æè½è¿½è¹¤ãè®ä½ æ¯é±æ¸æ¥çå°åªäºè¡åç¢ççµæï¼æçºè¿­ä»£ï¼è¤å©æé·ã</p>
+            <h5>數據彙整與效能優化</h5>
+            <p>Notion + AI 摘要 + 效能追蹤。讓你每週清楚看到哪些行動產生結果，持續迭代，複利成長。</p>
           </div>
         </div>
       </div>
       <div class="flagship-moat">
-        <h4>5 å¤§è­·åæ²³åªå¢</h4>
+        <h4>5 大護城河優勢</h4>
         <ul class="moat-list">
           <li>
-            <span class="moat-check">â</span>
+            <span class="moat-check">✓</span>
             <div>
-              <strong>AI æè¡æ´å</strong><br>
-              <small style="color:var(--white-40)">æåæ²¿å·¥å·å¯¦æ°æç¨ï¼ä¸åªå­¸æ¦å¿µ</small>
+              <strong>AI 技術整合</strong><br>
+              <small style="color:var(--white-40)">最前沿工具實戰應用，不只學概念</small>
             </div>
           </li>
           <li>
-            <span class="moat-check">â</span>
+            <span class="moat-check">✓</span>
             <div>
-              <strong>èªåªé«åäººåçæé </strong><br>
-              <small style="color:var(--white-40)">æé ç²¾æºåªè³ªåå®å¼æçæ¹æ³è«å®æ´è¤è£½</small>
+              <strong>自媒體個人品牌打造</strong><br>
+              <small style="color:var(--white-40)">打造精準優質名單引擎的方法論完整複製</small>
             </div>
           </li>
           <li>
-            <span class="moat-check">â</span>
+            <span class="moat-check">✓</span>
             <div>
-              <strong>é·å®æäº¤æè¡ï¼12 å¹´é å°æ¥­ååéå¯¦æ°ç¶é©ï¼</strong><br>
-              <small style="color:var(--white-40)">å¾å®ç·å·¥ç¨å¸«ï¼å°æ¥­åå°ç½ï¼å°é å°æ¥­åï¼å°é å°æ¸ç¾äººé·å®åéçæåè·¯å¾</small>
+              <strong>銷售成交技術（12 年領導業務團隊實戰經驗）</strong><br>
+              <small style="color:var(--white-40)">從宅男工程師，到業務小白，到頂尖業務，到領導數百人銷售團隊的成功路徑</small>
             </div>
           </li>
           <li>
-            <span class="moat-check">â</span>
+            <span class="moat-check">✓</span>
             <div>
-              <strong>åæ¥­æ¨¡å¼èè®ç¾ç­ç¥</strong><br>
-              <small style="color:var(--white-40)">ç·ä¸äºæ¥­ãèª²ç¨ãçµç¹è¡é·ãè¯çè¡é·ãå¤åè®ç¾</small>
+              <strong>商業模式與變現策略</strong><br>
+              <small style="color:var(--white-40)">線上事業、課程、組織行銷、聯盟行銷、多元變現</small>
             </div>
           </li>
           <li>
-            <span class="moat-check">â</span>
+            <span class="moat-check">✓</span>
             <div>
-              <strong>åäººæäºèæº«åº¦</strong><br>
-              <small style="color:var(--white-40)">çå¯¦çæäºè¡é·ï¼è®å­¸å¡èªåä½ ãä¿¡ä»»ä½ </small>
+              <strong>個人故事與溫度</strong><br>
+              <small style="color:var(--white-40)">真實的故事行銷，讓學員認同你、信任你</small>
             </div>
           </li>
         </ul>
         <div class="flagship-cta-wrap">
-          <p>4/30 ç·ä¸ç è¨æå®å¨åè²»<br>ç¾å ´å®æ´è§£ææ´å¥ç³»çµ±ï¼å³å»ååºæ±ºç­</p>
-          <a href="sales.html" class="btn-primary" style="margin-right:1rem">æ¥çå®æ´é·å®é </a>
-          <a href="https://cal.com/allen5280/1v1" class="btn-outline">é ç´ 1v1 è«®è©¢</a>
+          <p>4/30 線上研討會完全免費<br>現場完整解析整套系統，即刻做出決策</p>
+          <a href="sales.html" class="btn-primary" style="margin-right:1rem">查看完整銷售頁</a>
+          <a href="https://cal.com/allen5280/1v1" class="btn-outline">預約 1v1 諮詢</a>
         </div>
       </div>
     </div>
@@ -1147,46 +1298,46 @@
   <div class="section-wrap">
     <div class="about-grid">
       <div class="about-photo-frame reveal">
-        <img src="allen.jpg" alt="Allen æç·´ï¼é³æç¶­ï¼" style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="allen.jpg" alt="Allen 教練（陳柏維）" style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="photo-placeholder" style="display:none">
-          <span class="icon">ð¸</span>
-          <span>è«å° allen.jpg æ¾å¥åè³æå¤¾<br><small>å³å¯èªåé¡¯ç¤ºç§ç</small></span>
+          <span class="icon">📸</span>
+          <span>請將 allen.jpg 放入同資料夾<br><small>即可自動顯示照片</small></span>
         </div>
         <div class="photo-glow"></div>
       </div>
       <div class="about-info">
-        <div class="eyebrow reveal">éæ¼ Allen æç·´</div>
-        <h2 class="reveal reveal-delay-1">Allen æç·´ï¼é³æç¶­ï¼</h2>
-        <p class="about-title reveal reveal-delay-1">å­¸å¡åå¥½ååéå¸¸ç¨±å¼ä»çºãæç¶­å¥ãï¼å çºä»çµ¦äººä¸è¡å®å®çåéã</p>
-        <p class="about-title reveal reveal-delay-1" style="margin-top:-0.5rem;color:var(--white-40);font-size:0.88rem;">12 å¹´é å°æ¥­ååé Â· é·å®ç³»çµ±è¨­è¨å¸« Â· 800è¬+ å¨ç¶²æµé</p>
+        <div class="eyebrow reveal">關於 Allen 教練</div>
+        <h2 class="reveal reveal-delay-1">Allen 教練（陳柏維）</h2>
+        <p class="about-title reveal reveal-delay-1">學員和好友們通常稱呼他為「柏維哥」，因為他給人一股安定的力量。</p>
+        <p class="about-title reveal reveal-delay-1" style="margin-top:-0.5rem;color:var(--white-40);font-size:0.88rem;">12 年領導業務團隊 · 銷售系統設計師 · 800萬+ 全網流量</p>
         <div class="about-stats reveal reveal-delay-2">
           <div class="about-stat">
             <div class="about-stat-num">12+</div>
-            <div class="about-stat-label">12 å¹´é å°æ¥­ååéå¯¦æ°ç¶é©</div>
+            <div class="about-stat-label">12 年領導業務團隊實戰經驗</div>
           </div>
           <div class="about-stat">
             <div class="about-stat-num">1,000+</div>
-            <div class="about-stat-label">ä½å¹è¨å­¸å¡</div>
+            <div class="about-stat-label">位培訓學員</div>
           </div>
           <div class="about-stat">
-            <div class="about-stat-num">800è¬+</div>
-            <div class="about-stat-label">å¨ç¶²æµé</div>
+            <div class="about-stat-num">800萬+</div>
+            <div class="about-stat-label">全網流量</div>
           </div>
           <div class="about-stat">
             <div class="about-stat-num">2,300+</div>
-            <div class="about-stat-label">å ´æ¼è¬å¹è¨å ´æ¬¡</div>
+            <div class="about-stat-label">場演講培訓場次</div>
           </div>
         </div>
         <p class="about-story reveal reveal-delay-2">
-          å¾åªæåä¸­ç¢æ¥­ï¼è¢«å­¸æ ¡åä»¤éå­¸ï¼è¢«ç¶æ¯è¦ªåæ¾æ£çåéå°å¹´ï¼å°èªé¡å å¥ç©ºéç¹æ°é¨éï¼æ¦®ç²æ¶¼å±±å£«å®éç¬¬ä¸åãéä¼å¾ä»¥é«ä¸­èæ¥­ï¼èä¸åç«æåå¤§å­¸ç ç©¶æï¼å°è¡çå¤§ç«åæä»»è³æ·±ç ç¼å·¥ç¨å¸«ï¼å¾ä¾æçºç¾åé å°æ¥­åï¼æ¥èæçºä¼æ¥­å§è¨ææè¬å¸«ã12 å¹´ä»¥ä¾ï¼å¸¶é æ¸ç¾ä½å­¸å¡å¤¥ä¼´ï¼æ¥­ç¸¾å¾æé¶å°ææ¶å¥æ¸åè¬ã
+          從只有國中畢業，被學校勒令退學，被父母親友放棄的叛逆少年，到自願加入空降特戰部隊，榮獲涼山士官隊第一名。退伍後以高中肄業，考上國立成功大學研究所，到股王大立光擔任資深研發工程師；後來成為美商頂尖業務，接著成為企業內訓明星講師。12 年以來，帶領數百位學員夥伴，業績從掛零到月收入數十萬。
         </p>
         <div class="story-highlight reveal reveal-delay-3">
-          ãé£äºæè±é£çè½æé»ï¼å¾ä¾é½æçºäºææå¼·çæ­¦å¨ãæä¸æ¯ä¾è³£èª²ç¨çï¼ææ¯ä¾æéäºæ­¦å¨å®æ´äº¤çµ¦ä½ ãã
+          「那些最艱難的轉折點，後來都成為了我最強的武器。我不是來賣課程的，我是來把這些武器完整交給你。」
         </div>
         <p class="about-story reveal">
-          ç¾å¨ï¼éé AI å·¥å·èç³»çµ±åæ¹æ³ï¼Allen æç·´æ­£å¨å¹«å©ä¿éªæ¥­åãç´é·å¤¥ä¼´ãç·ä¸è¬å¸«ååµæ¥­èï¼ç¨æ´å°çæéï¼ååºæ´å¤§çææã
+          現在，透過 AI 工具與系統化方法，Allen 教練正在幫助保險業務、直銷夥伴、線上講師和創業者，用更少的時間，做出更大的成果。
         </p>
-        <a href="sales.html" class="btn-primary reveal" style="margin-top:1.5rem; display:inline-block;">äºè§£å®æ´èª²ç¨ç³»çµ±</a>
+        <a href="sales.html" class="btn-primary reveal" style="margin-top:1.5rem; display:inline-block;">了解完整課程系統</a>
       </div>
     </div>
   </div>
@@ -1197,106 +1348,106 @@
 <!-- Testimonials -->
 <section id="testimonials" class="testimonials-bg">
   <div class="section-wrap">
-    <div class="section-eyebrow reveal">çå¯¦å­¸å¡è¦è­</div>
-    <h2 class="section-title reveal reveal-delay-1">1,000+ ä½å­¸å¡çæ¹è®</h2>
-    <p class="section-sub reveal reveal-delay-2">ä¾èªä¿éªãç´é·ãè¬å¸«ãåµæ¥­åè¡åæ¥­ççå¯¦åé¥</p>
+    <div class="section-eyebrow reveal">真實學員見證</div>
+    <h2 class="section-title reveal reveal-delay-1">1,000+ 位學員的改變</h2>
+    <p class="section-sub reveal reveal-delay-2">來自保險、直銷、講師、創業各行各業的真實回饋</p>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
-        <div class="stars">âââââ</div>
-        <p class="t-text">ãåå  Allen çèª²ç¨ä¹åï¼æåä¿éªä¸å¹´æ¥­ç¸¾å¹³å¹³ãå­¸å® AI åå®å¼æä¹å¾ï¼æçéçåå®éç¼å®å¨èªååäºï¼ä¸åæçæäº¤éæ¯ä»¥åçä¸åãéä¸æ¯çè«ï¼æ¯ççå¯ä»¥è¤è£½çç³»çµ±ãã</p>
+        <div class="stars">★★★★★</div>
+        <p class="t-text">「參加 Allen 的課程之前，我做保險三年業績平平。學完 AI 名單引擎之後，我的陌生名單開發完全自動化了，一個月的成交量是以前的三倍。這不是理論，是真的可以複製的系統。」</p>
         <div class="t-author">
-          <div class="t-avatar">ç</div>
+          <div class="t-avatar">王</div>
           <div>
-            <div class="t-name">çå¿æ¡</div>
-            <div class="t-role">ä¿éªæ¥­åä¸»ç®¡ Â· å°ä¸­</div>
+            <div class="t-name">王心怡</div>
+            <div class="t-role">保險業務主管 · 台中</div>
           </div>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
-        <div class="stars">âââââ</div>
-        <p class="t-text">ãAllen çé·å®æäº¤èª²ç¨è®æå®å¨æ¹è®äºæåæ¹å¼ãä»¥åæ¯èªå·±ä¸åäººæ¼å½è·ï¼ç¾å¨æ¯ç³»çµ±èªåç¯©é¸æç·£äººï¼æåªåé«å¹å¼çä¸å°ä¸ï¼æåæçæåè¶é 5 åãã</p>
+        <div class="stars">★★★★★</div>
+        <p class="t-text">「Allen 的銷售成交課程讓我完全改變了招募方式。以前是自己一個人拼命跑，現在是系統自動篩選有緣人，我只做高價值的一對一，招募效率提升超過 5 倍。」</p>
         <div class="t-author">
-          <div class="t-avatar">é³</div>
+          <div class="t-avatar">陳</div>
           <div>
-            <div class="t-name">é³å¤§å</div>
-            <div class="t-role">ç´é·æ¥­å Â· é«é</div>
+            <div class="t-name">陳大偉</div>
+            <div class="t-role">直銷業務 · 高雄</div>
           </div>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
-        <div class="stars">âââââ</div>
-        <p class="t-text">ãåèªåªé«ä¸å¹´å¤äºï¼ç²çµ²ä¸ç´é·å¾å¾æ¢ãå­¸å® Allen çåäººåçèª²ç¨ï¼ä¸åæå§ IG å¾ 2000 æ¼²å° 18000ï¼æ´éè¦çæ¯éå§æäººä¸»åè©¢åèª²ç¨ï¼å®å¨æ¹è®äºæåçæçæ¹å¼ãã</p>
+        <div class="stars">★★★★★</div>
+        <p class="t-text">「做自媒體一年多了，粉絲一直長得很慢。學完 Allen 的個人品牌課程，三個月內 IG 從 2000 漲到 18000，更重要的是開始有人主動詢問課程，完全改變了我做生意的方式。」</p>
         <div class="t-author">
-          <div class="t-avatar">æ</div>
+          <div class="t-avatar">林</div>
           <div>
-            <div class="t-name">æä½³ç²</div>
-            <div class="t-role">ç·ä¸èª²ç¨è¬å¸« Â· å°å</div>
+            <div class="t-name">林佳玲</div>
+            <div class="t-role">線上課程講師 · 台北</div>
           </div>
         </div>
       </div>
       <div class="testimonial-card reveal">
-        <div class="stars">âââââ</div>
-        <p class="t-text">ãAI å·¥å·èª²ç¨æ¯ææå¼åç¥¨å¹çæè³ãAllen æçä¸æ¯é£ç¨®ç¨ä¸ä¸ççè«ï¼æ¯ççå¯ä»¥ç¶å¤©å°±ç¨ä¸çå·¥å·çµåãç¾å¨æçåéç¢å¼æ¯å»å¹´çå©åï¼å·¥ä½æéåèæ¸å°äºä¸åãã</p>
+        <div class="stars">★★★★★</div>
+        <p class="t-text">「AI 工具課程是我最值回票價的投資。Allen 教的不是那種用不上的理論，是真的可以當天就用上的工具組合。現在我的團隊產值是去年的兩倍，工作時間反而減少了一半。」</p>
         <div class="t-author">
-          <div class="t-avatar">å¼µ</div>
+          <div class="t-avatar">張</div>
           <div>
-            <div class="t-name">å¼µæå²</div>
-            <div class="t-role">æ¥­åä¸»ç®¡ Â· æ°å</div>
+            <div class="t-name">張明哲</div>
+            <div class="t-role">業務主管 · 新北</div>
           </div>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
-        <div class="stars">âââââ</div>
-        <p class="t-text">ãææ¯èªç±æ¥æ¡èï¼æçè¦çå°±æ¯æ¯åæé½è¦éæ°æ¾å®¢æ¶ãå­¸å®åå®å¼æç³»çµ±ä¹å¾ï¼ç¾å¨æ¯å®¢æ¶æéç­æï¼èä¸æ¯æè¿½èå®¢æ¶è·ãAllen èªªçç³»çµ±æ¯åªåæ´éè¦ï¼æç¾å¨å®å¨çè§£äºãã</p>
+        <div class="stars">★★★★★</div>
+        <p class="t-text">「我是自由接案者，最痛苦的就是每個月都要重新找客戶。學完名單引擎系統之後，現在是客戶排隊等我，而不是我追著客戶跑。Allen 說的系統比努力更重要，我現在完全理解了。」</p>
         <div class="t-author">
-          <div class="t-avatar">é»</div>
+          <div class="t-avatar">黃</div>
           <div>
-            <div class="t-name">é»æå</div>
-            <div class="t-role">èªç±å·¥ä½è Â· å°å</div>
+            <div class="t-name">黃曉嘉</div>
+            <div class="t-role">自由工作者 · 台南</div>
           </div>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
-        <div class="stars">âââââ</div>
-        <p class="t-text">ãAllen çç°¡å ±èæ¼è¬èª²ç¨æ¹è®äºæå°åæ¥­æºéçèªç¥ãç¬¬ä¸æ¬¡æç¨å¨å®¢æ¶ææ¡å¾ï¼æåçç´æ¥å¾ 30% æåå° 70%ãæ¼è¬ççå¯ä»¥è®ç¾ï¼ä»çæ¹æ³è«è®éä»¶äºè®å¾æéè¼¯å¯å¾ªãã</p>
+        <div class="stars">★★★★★</div>
+        <p class="t-text">「Allen 的簡報與演講課程改變了我對商業溝通的認知。第一次應用在客戶提案後，成功率直接從 30% 提升到 70%。演講真的可以變現，他的方法論讓這件事變得有邏輯可循。」</p>
         <div class="t-author">
-          <div class="t-avatar">å³</div>
+          <div class="t-avatar">吳</div>
           <div>
-            <div class="t-name">å³å»ºå¿</div>
-            <div class="t-role">åµæ¥­è Â· æ¡å</div>
+            <div class="t-name">吳建志</div>
+            <div class="t-role">創業者 · 桃園</div>
           </div>
         </div>
       </div>
       <div class="testimonial-card reveal">
-        <div class="stars">âââââ</div>
-        <p class="t-text">ãè·äº Allen æç·´å©å¹´ï¼çèä»å¾æ«æä¸­ç«èµ·ä¾ï¼ç¨ AI éæ°å»ºç«æ´åäºæ¥­ç³»çµ±ï¼ééç¨æ¬èº«å°±æ¯æå¥½çææãä»åäº«çä¸åªæ¯æè¡ï¼æ´æ¯é¢å°éå¢çå¿æãéææ¯æé£å¾çãã</p>
+        <div class="stars">★★★★★</div>
+        <p class="t-text">「跟了 Allen 教練兩年，看著他從挫折中站起來，用 AI 重新建立整個事業系統，這過程本身就是最好的教材。他分享的不只是技術，更是面對逆境的心態。這才是最難得的。」</p>
         <div class="t-author">
-          <div class="t-avatar">è¡</div>
+          <div class="t-avatar">蔡</div>
           <div>
-            <div class="t-name">è¡ç¾é³³</div>
-            <div class="t-role">ä¿éªä¸»ç®¡ Â· å°ä¸­</div>
+            <div class="t-name">蔡美鳳</div>
+            <div class="t-role">保險主管 · 台中</div>
           </div>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
-        <div class="stars">âââââ</div>
-        <p class="t-text">ãå¬åè½ç§åéåæ¦å¿µè®æçé»åçæå¾¹åºè½åãä»¥ååªç¥éè±å»£åè²»ï¼ç¾å¨ç¥éæéº¼å»ºç«èªå·±çåå®æ± ï¼æçºè®ç¾ãåå¹´ä¸ä¾ï¼å»£åææ¬éäº 60%ï¼çæ¥­é¡å»æé·äº 40%ãã</p>
+        <div class="stars">★★★★★</div>
+        <p class="t-text">「公域轉私域這個概念讓我的電商生意徹底轉型。以前只知道花廣告費，現在知道怎麼建立自己的名單池，持續變現。半年下來，廣告成本降了 60%，營業額卻成長了 40%。」</p>
         <div class="t-author">
-          <div class="t-avatar">å</div>
+          <div class="t-avatar">劉</div>
           <div>
-            <div class="t-name">åå®èª</div>
-            <div class="t-role">é»åèé Â· å°å</div>
+            <div class="t-name">劉宇航</div>
+            <div class="t-role">電商老闆 · 台北</div>
           </div>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
-        <div class="stars">âââââ</div>
-        <p class="t-text">ãèº«å¿éé£éèª²æ¯ææå¤çé©åãåæ¬è¦ºå¾è·æ¥­ç¸¾æ²éä¿ï¼ä½ä¸å®ä¹å¾ç¼ç¾å§å¨è½éç´æ¥å½±é¿ä½ å¨å®¢æ¶é¢åçæ°£å ´ãèªä¿¡æåä¹å¾ï¼æäº¤çççæé«äºãAllen æéä¸å¡ä¹ç³»çµ±åï¼å¤ªå²å®³äºãã</p>
+        <div class="stars">★★★★★</div>
+        <p class="t-text">「身心靈那門課是我意外的驚喜。原本覺得跟業績沒關係，但上完之後發現內在能量直接影響你在客戶面前的氣場。自信提升之後，成交率真的提高了。Allen 把這一塊也系統化，太厲害了。」</p>
         <div class="t-author">
-          <div class="t-avatar">è¨±</div>
+          <div class="t-avatar">許</div>
           <div>
-            <div class="t-name">è¨±çè¬</div>
-            <div class="t-role">ç¾å®¹é¡§å Â· æ°ç«¹</div>
+            <div class="t-name">許玉芬</div>
+            <div class="t-role">美容顧問 · 新竹</div>
           </div>
         </div>
       </div>
@@ -1309,73 +1460,73 @@
 <!-- FAQ -->
 <section class="faq-bg">
   <div class="section-wrap">
-    <div class="section-eyebrow reveal">å¸¸è¦åé¡</div>
-    <h2 class="section-title reveal reveal-delay-1">ä½ æ³ç¥éçé½å¨éè£¡</h2>
-    <p class="section-sub reveal reveal-delay-2">éæå¶ä»åé¡ï¼é ç´åè²» 1v1 è«®è©¢ç´æ¥å</p>
+    <div class="section-eyebrow reveal">常見問題</div>
+    <h2 class="section-title reveal reveal-delay-1">你想知道的都在這裡</h2>
+    <p class="section-sub reveal reveal-delay-2">還有其他問題？預約免費 1v1 諮詢直接問</p>
     <div class="faq-list">
       <div class="faq-item reveal">
         <button class="faq-q">
-          <span>éå¥èª²ç¨é©åèª°ï¼</span>
+          <span>這套課程適合誰？</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            é©åä¿éªæ¥­åãç´é·æ¥­åãç·ä¸èª²ç¨è¬å¸«ãèªç±å·¥ä½èãèé/ä¸»ç®¡ãä»¥åä»»ä½æ³éé AI å·¥å·åç³»çµ±åæ¹æ³æåæ¥­ç¸¾ãæé åäººåççäººãç¹å¥æ¯ç®åé äººèå·²ç¶å°é ãå¸ææç ´æ¥­ç¸¾å¤©è±æ¿çæ¥­åå¤¥ä¼´ã
+            適合保險業務、直銷業務、線上課程講師、自由工作者、老闆/主管、以及任何想透過 AI 工具和系統化方法提升業績、打造個人品牌的人。特別是目前靠人脈已經到頂、希望打破業績天花板的業務夥伴。
           </div>
         </div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">
-          <span>ææ¯é¶åºç¤ï¼å¯ä»¥å­¸åï¼</span>
+          <span>我是零基礎，可以學嗎？</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            å®å¨å¯ä»¥ãAllen çæå­¸é¢¨æ ¼æ¯ãåç¨ï¼åçè§£ãââä½ ä¸éè¦æ AI æè¡ï¼ä¹ä¸éè¦æèªåªé«åºç¤ãèª²ç¨è¨­è¨æ¯è®ä½ å¾ç¬¬ä¸å¤©å°±è½ç´æ¥è½å°æç¨ï¼çå°å¯¦éçµæã
+            完全可以。Allen 的教學風格是「先用，再理解」——你不需要懂 AI 技術，也不需要有自媒體基礎。課程設計是讓你從第一天就能直接落地應用，看到實際結果。
           </div>
         </div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">
-          <span>4/30 ç·ä¸ç è¨ææ¯ä»è²»çåï¼</span>
+          <span>4/30 線上研討會是付費的嗎？</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            å®å¨åè²»ã4/30 æä¸ 8:00 çç·ä¸ç è¨æä¸æ¶ä»»ä½è²»ç¨ãä½ åªéè¦å ±åå°±è½åå ï¼ç è¨æä¸ Allen æå®æ´æè§£æ´å¥ AI åå®å¼æç³»çµ±ï¼ä¸¦åäº«çå¯¦æ¡ä¾ã
+            完全免費。4/30 晚上 8:00 的線上研討會不收任何費用。你只需要報名就能參加，研討會上 Allen 會完整拆解整套 AI 名單引擎系統，並分享真實案例。
           </div>
         </div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">
-          <span>èª²ç¨è³¼è²·å¾æå¤ä¹å¯ä»¥çï¼</span>
+          <span>課程購買後有多久可以看？</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            è³¼è²·å¾æ°¸ä¹è§çï¼ä¸é¨èèª²ç¨æçºæ´æ°ï¼ä½ é½å¯ä»¥åè²»åå¾ææ°çæ¬ãAllen ææçºè¿­ä»£èª²ç¨å§å®¹ï¼ç¢ºä¿ä½ å­¸å°çæ°¸é æ¯æåæ²¿çæ¹æ³ã
+            購買後永久觀看，且隨著課程持續更新，你都可以免費取得最新版本。Allen 會持續迭代課程內容，確保你學到的永遠是最前沿的方法。
           </div>
         </div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">
-          <span>å¦æææä¸å¥½ï¼æéæ¬¾ä¿è­åï¼</span>
+          <span>如果效果不好，有退款保證嗎？</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            æ 30 å¤©ç¡æ¢ä»¶éæ¬¾ä¿è­ãå¦æä½ å¨ 30 å¤©å§èªçå­¸ç¿ä½æ²æçå°ææï¼å¯ä»¥ç³è«å¨é¡éæ¬¾ï¼æ²æä»»ä½æ¢ä»¶ååé¡ãAllen å°èªå·±çç³»çµ±æè¶³å¤ ä¿¡å¿ï¼æä»¥æ¢åéåæ¿è«¾ã
+            有 30 天無條件退款保證。如果你在 30 天內認真學習但沒有看到效果，可以申請全額退款，沒有任何條件和問題。Allen 對自己的系統有足夠信心，所以敢做這個承諾。
           </div>
         </div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">
-          <span>è³¼è²·èª²ç¨å¾æåªäºæ¯æï¼</span>
+          <span>購買課程後有哪些支持？</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            åå«ï¼LINE å®æ¹å¸³èå­¸å¡ç¾¤çµãå®æ Q&A ç´æ­ç­çãAI æç·´ç³»çµ± Jarvis ä½¿ç¨æ¬éï¼å¯é¨æå AI æåç²å¾å³ææå°ï¼ãä»¥å Allen è¦ªèªåè¦çç§è¨ç®¡éãä½ ä¸æ¯è²·äºå°±ä¸ç®¡ï¼æ¯çæ­£æäººéªä½ èµ°å®æ´åå­¸ç¿éç¨ã
+            包含：LINE 官方帳號學員群組、定期 Q&A 直播答疑、AI 教練系統 Jarvis 使用權限（可隨時向 AI 提問獲得即時指導）、以及 Allen 親自回覆的私訊管道。你不是買了就不管，是真正有人陪你走完整個學習過程。
           </div>
         </div>
       </div>
@@ -1388,40 +1539,40 @@
 <!-- Final CTA -->
 <section class="final-cta">
   <div class="cta-inner">
-    <div class="section-eyebrow reveal">éå§ä½ çè½è®</div>
+    <div class="section-eyebrow reveal">開始你的轉變</div>
     <h2 class="cta-title reveal reveal-delay-1">
-      æå¥½çæéæ¯ 10 å¹´åï¼<br>
-      <span class="gold">å¶æ¬¡å°±æ¯ç¾å¨ã</span>
+      最好的時間是 10 年前，<br>
+      <span class="gold">其次就是現在。</span>
     </h2>
     <p class="cta-sub reveal reveal-delay-2">
-      ä¸è¦è®ãç­å°æºåå¥½ãæçºæ°¸é çèå£ã<br>
-      é ç´ä¸æ¬¡åè²»ç 1v1 è¨ºè©¢ï¼è® Allen å¹«ä½ æ¾åºæé©eä½ çæé·è·¯å¾ã
+      不要讓「等到準備好」成為永遠的藉口。<br>
+      預約一次免費的 1v1 診詢，讓 Allen 幫你找出最適合你的成長路徑。
     </p>
     <div class="cta-btns reveal reveal-delay-3">
-      <a href="https://cal.com/allen5280/1v1" class="btn-primary">ç«å³é ç´åè²» 1v1 è¨ºè©¢</a>
-      <a href="sales.html" class="btn-outline">æ¥ç AI åå®å¼æç³»çµ±</a>
+      <a href="https://cal.com/allen5280/1v1" class="btn-primary">立即預約免費 1v1 診詢</a>
+      <a href="sales.html" class="btn-outline">查看 AI 名單引擎系統</a>
     </div>
-    <p class="cta-note reveal">åè²» Â· ç¡å£å Â· éå°ä½ çææ³éèº«åæ</p>
+    <p class="cta-note reveal">免費 · 無壓力 · 針對你的情況量身分析</p>
   </div>
 </section>
 
 <!-- Footer -->
 <footer>
-  <div class="footer-logo">æ¼¢å¿»æ½è½å¹è¨å­¸é¢</div>
-  <p style="color:var(--white-40);font-size:0.85rem;margin-bottom:2rem;">AI åå®å¼æ â ç²¾æºæäº¤ç³»çµ± ï¼ æ¥­åçé£æ¹ç¨å¼</p>
+  <div class="footer-logo">漢忻潛能培訓學院</div>
+  <p style="color:var(--white-40);font-size:0.85rem;margin-bottom:2rem;">AI 名單引擎 ✖ 精準成交系統 ＝ 業務狂飆方程式</p>
   <div class="footer-links" style="margin-bottom:2rem;">
-    <a href="index.html">é¦é </a>
-    <a href="#courses">èª²ç¨</a>
-    <a href="sales.html">AIåå®å¼æ</a>
-    <a href="#about">éæ¼Allen</a>
-    <a href="https://cal.com/allen5280/1v1">é ç´è«®è©¢</a>
+    <a href="index.html">首頁</a>
+    <a href="#courses">課程</a>
+    <a href="sales.html">AI名單引擎</a>
+    <a href="#about">關於Allen</a>
+    <a href="https://cal.com/allen5280/1v1">預約諮詢</a>
   </div>
-  <p style="font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-3);margin-bottom:1.5rem;opacity:0.7;">å å¥æåçç¤¾ç¾¤</p>
+  <p style="font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-3);margin-bottom:1.5rem;opacity:0.7;">加入我們的社群</p>
   <div class="social-grid">
     <!-- Skool -->
     <a href="#" class="social-btn" style="--brand:#7C3AED">
       <svg width="22" height="22" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="0" fill="#f0eeeb"/><text x="1" y="82" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="78" fill="#1B3FAB">s</text><text x="50" y="82" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="78" fill="#C93928">k</text></svg>
-      <div><div style="font-weight:700;font-size:0.88rem;color:var(--white)">Skool</div><div style="font-size:0.72rem;color:var(--white-40)">é«å¹å¼ç¤¾ç¾¤</div></div>
+      <div><div style="font-weight:700;font-size:0.88rem;color:var(--white)">Skool</div><div style="font-size:0.72rem;color:var(--white-40)">高價值社群</div></div>
     </a>
     <!-- Instagram -->
     <a href="#" class="social-btn">
@@ -1436,36 +1587,36 @@
     <!-- TikTok -->
     <a href="#" class="social-btn">
       <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="#010101"/><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.75a8.18 8.18 0 004.84 1.55V6.87a4.85 4.85 0 01-1.07-.18z" fill="white"/></svg>
-      <div><div style="font-weight:700;font-size:0.88rem;color:var(--white)">TikTok</div><div style="font-size:0.72rem;color:var(--white-40)">ç­å½±é³</div></div>
+      <div><div style="font-weight:700;font-size:0.88rem;color:var(--white)">TikTok</div><div style="font-size:0.72rem;color:var(--white-40)">短影音</div></div>
     </a>
     <!-- YouTube -->
     <a href="#" class="social-btn">
       <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z" fill="#FF0000"/><path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="white"/></svg>
-      <div><div style="font-weight:700;font-size:0.88rem;color:var(--white)">YouTube</div><div style="font-size:0.72rem;color:var(--white-40)">å½±çé »é</div></div>
+      <div><div style="font-weight:700;font-size:0.88rem;color:var(--white)">YouTube</div><div style="font-size:0.72rem;color:var(--white-40)">影片頻道</div></div>
     </a>
     <!-- LINE -->
     <a href="#" class="social-btn">
       <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="#06C755"/><path d="M20 10.61C20 7.02 16.42 4.1 12 4.1S4 7.02 4 10.61c0 3.2 2.84 5.88 6.68 6.39.26.06.62.17.71.39.08.2.05.51.02.71l-.11.68c-.04.2-.16.79.69.43.85-.36 4.57-2.69 6.24-4.61C19.54 13.22 20 12.0 20 10.61zm-9.81 2.05h-1.8a.28.28 0 01-.28-.28V9.2c0-.15.12-.28.28-.28h.46c.15 0 .28.13.28.28v2.7h1.06c.16 0 .28.12.28.28v.48c0 .15-.12.28-.28.28zm1.29-.28c0 .15-.12.28-.28.28h-.45a.28.28 0 01-.28-.28V9.2c0-.15.12-.28.28-.28h.45c.16 0 .28.13.28.28v3.18zm4.38 0a.28.28 0 01-.28.28h-.46a.27.27 0 01-.22-.12l-1.44-1.95v1.79a.28.28 0 01-.28.28h-.45a.28.28 0 01-.28-.28V9.2c0-.15.12-.28.28-.28h.47c.09 0 .17.04.22.12l1.43 1.93V9.2c0-.15.13-.28.28-.28h.45c.16 0 .28.13.28.28v3.18zm2.49-2.23c.16 0 .28.12.28.28v.45c0 .16-.12.28-.28.28h-1.06v.5h1.06c.16 0 .28.13.28.28v.45c0 .15-.12.28-.28.28h-1.59a.28.28 0 01-.28-.28V9.2c0-.15.12-.28.28-.28h1.59c.16 0 .28.13.28.28v.46c0 .15-.12.28-.28.28h-1.06v.49h1.06z" fill="white"/></svg>
-      <div><div style="font-weight:700;font-size:0.88rem;color:var(--white)">å®æ¹ LINE</div><div style="font-size:0.72rem;color:var(--white-40)">å³æè¯çµ¡</div></div>
+      <div><div style="font-weight:700;font-size:0.88rem;color:var(--white)">官方 LINE</div><div style="font-size:0.72rem;color:var(--white-40)">即時聯絡</div></div>
     </a>
     <!-- WhatsApp -->
     <a href="#" class="social-btn">
       <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#25D366"/></svg>
-      <div><div style="font-weight:700;font-size:0.88rem;color:var(--white)">WhatsApp</div><div style="font-size:0.72rem;color:var(--white-40)">åéè¯çµ¡</div></div>
+      <div><div style="font-weight:700;font-size:0.88rem;color:var(--white)">WhatsApp</div><div style="font-size:0.72rem;color:var(--white-40)">國際聯絡</div></div>
     </a>
   </div>
   <div class="footer-links" style="margin-top:2.5rem;">
-    <a href="index.html">é¦é </a>
-    <a href="#courses">9å¤§èª²ç¨</a>
-    <a href="sales.html">AIåå®å¼æ</a>
-    <a href="#about">éæ¼Allen</a>
-    <a href="https://cal.com/allen5280/1v1">åè²»è«®è©¢</a>
+    <a href="index.html">首頁</a>
+    <a href="#courses">9大課程</a>
+    <a href="sales.html">AI名單引擎</a>
+    <a href="#about">關於Allen</a>
+    <a href="https://cal.com/allen5280/1v1">免費諮詢</a>
   </div>
-  <p class="footer-copy">Â© 2026 æ¼¢å¿»æ½è½å¹è¨å­¸é¢ Â· Allen æç·´ï¼é³æç¶­ï¼Â· çæ¬ææ</p>
+  <p class="footer-copy">© 2026 漢忻潛能培訓學院 · Allen 教練（陳柏維）· 版權所有</p>
 </footer>
 
 <script>
-  // âââ Counter Animation âââ
+  // ─── Counter Animation ───
   function animateCounter(el) {
     const target = parseInt(el.getAttribute('data-target'));
     if (!target) return;
@@ -1478,7 +1629,7 @@
     }, 25);
   }
 
-  // âââ Scroll Reveal âââ
+  // ─── Scroll Reveal ───
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1499,7 +1650,7 @@
     }, 500);
   });
 
-  // âââ FAQ Accordion âââ
+  // ─── FAQ Accordion ───
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
@@ -1520,7 +1671,7 @@
     });
   });
 
-  // âââ Nav Scroll Effect âââ
+  // ─── Nav Scroll Effect ───
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
