@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI åå®å¼æ Ã ç²¾æºæäº¤ç³»çµ±â¢ | Allen æç·´ Â· æ¼¢å¿»æ½è½å¹è¨å­¸é¢</title>
+  <meta name="description" content="è®ä½ çæ¥­å 80% èªååéä½ãAIåå®å¼æ Ã ç²¾æºæäº¤ç³»çµ±â¢ â ä¿éªã»ç´é·ã»è¬å¸«ã»åµæ¥­èé¦é¸ã4/30 åè²»ç·ä¸ç è¨æã">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06060a;
+      --bg-2: #0d0d16;
+      --bg-3: #111120;
+      --border: rgba(212,175,55,0.12);
+      --border-bright: rgba(212,175,55,0.35);
+      --gold-1: #f5e27a;
+      --gold-2: #c8921a;
+      --gold-3: #f0c040;
+      --gold-4: #9a6e10;
+      --white: #f5f2ed;
+      --white-70: rgba(245,242,237,0.7);
+      --white-40: rgba(245,242,237,0.4);
+      --serif: 'Noto Serif TC', 'Georgia', serif;
+      --sans: 'Noto Sans TC', system-ui, sans-serif;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--sans);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    .gold {
+      background: linear-gradient(135deg, var(--gold-1) 0%, var(--gold-2) 40%, var(--gold-3) 70%, var(--gold-4) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    /* Orbs */
+    .orbs { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; overflow:hidden; }
+    .orb { position:absolute; border-radius:50%; filter:blur(110px); opacity:0.1; }
+    .orb-1 { width:700px; height:700px; background:radial-gradient(circle, #c8921a, transparent); top:-200px; right:-200px; animation:float1 20s ease-in-out infinite; }
+    .orb-2 { width:500px; height:500px; background:radial-gradient(circle, #2a1080, transparent); bottom:-100px; left:-150px; animation:float2 25s ease-in-out infinite; }
+    @keyframes float1 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(-80px,100px);} }
+    @keyframes float2 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(60px,-80px);} }
+
+    body::before {
+      content:''; position:fixed; top:0; left:0; width:100%; height:100%;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity:0.025; pointer-events:none; z-index:0;
+    }
+
+    /* Alert Bar */
+    .alert-bar {
+      background: linear-gradient(90deg, #8b5e0a, var(--gold-2), #8b5e0a);
+      background-size: 200% auto;
+      animation: shimmer 4s linear infinite;
+      color: #06060a;
+      text-align: center;
+      padding: 0.85rem 1rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      position: sticky; top: 0; z-index: 1001;
+      letter-spacing: 0.03em;
+    }
+    .alert-bar a { color: #06060a; font-weight: 900; text-decoration: underline; }
+    @keyframes shimmer { 0%{background-position:0% center;} 100%{background-position:200% center;} }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 48px; width:100%; z-index:1000;
+      background: rgba(6,6,10,0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    .nav-inner { max-width:1200px; margin:0 auto; padding:0 2rem; display:flex; justify-content:space-between; align-items:center; }
+    .nav-logo {
+      font-family:var(--serif); font-weight:900; font-size:1.15rem;
+      background:linear-gradient(135deg, var(--gold-1), var(--gold-2));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      text-decoration:none;
+    }
+    .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
+    .nav-links a { text-decoration:none; color:var(--white-70); font-size:0.88rem; font-weight:500; transition:color .25s; }
+    .nav-links a:hover { color:var(--gold-3); }
+    .nav-cta { padding:0.55rem 1.4rem; background:linear-gradient(135deg,var(--gold-2),var(--gold-1)); color:#06060a !important; border-radius:50px; font-weight:700 !important; font-size:0.85rem !important; }
+
+    /* Buttons */
+    .btn-primary {
+      display:inline-block; padding:1.1rem 2.8rem;
+      background:linear-gradient(90deg, var(--gold-2), var(--gold-1), var(--gold-2));
+      background-size:200% auto; color:#06060a;
+      border-radius:50px; font-weight:700; font-size:1rem; text-decoration:none;
+      transition:all .3s; animation:shimmer 3s linear infinite;
+      box-shadow:0 0 40px rgba(200,146,26,0.35); border:none; cursor:pointer; font-family:var(--sans);
+    }
+    .btn-primary:hover { transform:translateY(-4px); box-shadow:0 16px 50px rgba(200,146,26,0.55); }
+    .btn-outline {
+      display:inline-block; padding:1.1rem 2.8rem;
+      background:transparent; color:var(--gold-1);
+      border:1px solid var(--border-bright); border-radius:50px;
+      font-weight:600; font-size:1rem; text-decoration:none;
+      transition:all .3s; backdrop-filter:blur(8px);
+    }
+    .btn-outline:hover { background:rgba(200,146,26,0.1); border-color:var(--gold-1); transform:translateY(-4px); }
+
+    /* Gold line */
+    .gold-line { width:100%; height:1px; background:linear-gradient(90deg,transparent,var(--gold-2),transparent); position:relative; z-index:1; }
+
+    /* Reveal */
+    .reveal { opacity:0; transform:translateY(28px); transition:all .7s cubic-bezier(.4,0,.2,1); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay:.12s; }
+    .reveal-delay-2 { transition-delay:.24s; }
+    .reveal-delay-3 { transition-delay:.36s; }
+
+    /* âââ HERO âââ */
+    .hero {
+      min-height: 100vh; display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      text-align:center; padding:8rem 2rem 6rem;
+      position:relative; z-index:1;
+    }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:0.5rem;
+      padding:0.5rem 1.4rem;
+      border:1px solid var(--border-bright);
+      background:rgba(200,146,26,0.08);
+      border-radius:50px;
+      font-size:0.85rem; color:var(--gold-1);
+      letter-spacing:0.08em; margin-bottom:2.5rem;
+    }
+    .hero-badge .dot { width:6px; height:6px; background:var(--gold-3); border-radius:50%; animation:blink 1.5s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+    .hero h1 {
+      font-family:var(--serif); font-weight:900;
+      font-size:clamp(2.5rem, 7vw, 5.5rem);
+      line-height:1.08; letter-spacing:-0.02em;
+      color:var(--white); margin-bottom:1.5rem;
+    }
+    .hero h1 .product-name {
+      display:block;
+      background:linear-gradient(135deg, var(--gold-1) 0%, var(--gold-2) 35%, var(--gold-3) 65%, var(--gold-4) 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    }
+    .hero-sub {
+      font-size:clamp(1rem, 2vw, 1.25rem);
+      color:var(--white-70); margin-bottom:2rem;
+      max-width:700px; font-weight:300; line-height:1.8;
+    }
+    .deadline-badge {
+      display:inline-block;
+      padding:0.8rem 2rem;
+      background:linear-gradient(135deg, rgba(200,146,26,0.15), rgba(200,146,26,0.05));
+      border:1px solid var(--border-bright);
+      border-radius:12px;
+      margin-bottom:3rem;
+      font-size:1rem; color:var(--gold-1); font-weight:600;
+      letter-spacing:0.05em;
+    }
+    .deadline-badge strong { color:var(--gold-3); }
+    .hero-ctas { display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center; margin-bottom:4rem; }
+    /* Hero proof row */
+    .proof-row {
+      display:flex; gap:2.5rem; flex-wrap:wrap; justify-content:center;
+      padding-top:3rem; border-top:1px solid var(--border);
+      max-width:800px;
+    }
+    .proof-item { text-align:center; }
+    .proof-num {
+      font-family:var(--serif); font-weight:900; font-size:2rem;
+      background:linear-gradient(135deg, var(--gold-1), var(--gold-2));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      display:block;
+    }
+    .proof-label { font-size:0.8rem; color:var(--white-40); letter-spacing:0.05em; }
+
+    /* âââ PAIN POINTS âââ */
+    .pain-bg { background:var(--bg-2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .pain-wrap { max-width:900px; margin:0 auto; padding:6rem 2rem; }
+    .pain-title {
+      font-family:var(--serif); font-weight:900;
+      font-size:clamp(1.8rem, 4vw, 2.8rem);
+      text-align:center; margin-bottom:0.8rem;
+      color:var(--white);
+    }
+    .pain-sub { text-align:center; color:var(--white-40); font-size:1rem; margin-bottom:4rem; }
+    .pain-list { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+    .pain-item {
+      display:flex; align-items:flex-start; gap:1rem;
+      padding:1.5rem; background:rgba(255,255,255,0.02);
+      border:1px solid var(--border); border-radius:14px;
+    }
+    .pain-x { color:#ff6060; font-size:1.2rem; flex-shrink:0; margin-top:0.15rem; }
+    .pain-item p { font-size:0.92rem; color:var(--white-70); line-height:1.7; }
+
+    /* âââ SOLUTION âââ */
+    .solution-wrap { max-width:1100px; margin:0 auto; padding:6rem 2rem; }
+    .solution-eyebrow { font-size:0.8rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-3); font-weight:700; margin-bottom:1rem; text-align:center; }
+    .solution-title {
+      font-family:var(--serif); font-weight:900;
+      font-size:clamp(2rem, 4vw, 3rem); text-align:center;
+      color:var(--white); margin-bottom:0.8rem; line-height:1.2;
+    }
+    .solution-sub { text-align:center; color:var(--white-40); font-size:1rem; margin-bottom:4rem; }
+
+    /* âââ 4 PILLARS âââ */
+    .pillars-grid {
+      display:grid; grid-template-columns:repeat(2, 1fr);
+      gap:1.5rem; margin-bottom:3rem;
+    }
+    .pillar-card {
+      padding:2.5rem 2rem;
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--border);
+      border-radius:18px; position:relative;
+      overflow:hidden; transition:all .4s;
+    }
+    .pillar-card::after {
+      content:''; position:absolute;
+      top:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg, var(--gold-2), var(--gold-1), var(--gold-2));
+      background-size:200% auto;
+      opacity:0; transition:opacity .4s;
+    }
+    .pillar-card:hover { border-color:var(--border-bright); background:rgba(200,146,26,0.04); transform:translateY(-6px); }
+    .pillar-card:hover::after { opacity:1; animation:shimmer 3s linear infinite; }
+    .pillar-icon-wrap {
+      width:54px; height:54px;
+      background:linear-gradient(135deg, rgba(200,146,26,0.2), rgba(200,146,26,0.05));
+      border:1px solid var(--border-bright);
+      border-radius:14px; display:flex; align-items:center; justify-content:center;
+      font-size:1.6rem; margin-bottom:1.5rem;
+    }
+    .pillar-card h3 {
+      font-family:var(--serif); font-weight:900;
+      font-size:1.2rem; color:var(--white); margin-bottom:0.8rem;
+    }
+    .pillar-card p { font-size:0.9rem; color:var(--white-70); line-height:1.8; font-weight:300; }
+    .pillar-tags { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:1.2rem; }
+    .ptag {
+      padding:0.2rem 0.7rem; border:1px solid var(--border);
+      border-radius:50px; font-size:0.72rem; color:var(--gold-3);
+    }
+
+    /* âââ 5 MOAT âââ */
+    .moat-bg { background:var(--bg-2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .moat-wrap { max-width:1100px; margin:0 auto; padding:6rem 2rem; }
+    .moat-title {
+      font-family:var(--serif); font-weight:900;
+      font-size:clamp(2rem, 4vw, 3rem); text-align:center;
+      color:var(--white); margin-bottom:0.8rem;
+    }
+    .moat-sub { text-align:center; color:var(--white-40); font-size:1rem; margin-bottom:4rem; }
+    .moat-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:1.2rem; }
+    .moat-card {
+      padding:2rem 1.5rem; text-align:center;
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--border); border-radius:16px;
+      transition:all .35s;
+    }
+    .moat-card:hover { border-color:var(--border-bright); background:rgba(200,146,26,0.05); transform:translateY(-8px); box-shadow:0 20px 60px rgba(0,0,0,0.4); }
+    .moat-num {
+      font-family:var(--serif); font-weight:900; font-size:2.5rem;
+      background:linear-gradient(135deg, var(--gold-1), var(--gold-2));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      display:block; margin-bottom:0.5rem;
+    }
+    .moat-card h4 { font-size:0.95rem; color:var(--white); margin-bottom:0.6rem; font-weight:700; line-height:1.4; }
+    .moat-card p { font-size:0.8rem; color:var(--white-40); line-height:1.7; }
+
+    /* âââ WHO IS THIS FOR âââ */
+    .who-wrap { max-width:1000px; margin:0 auto; padding:6rem 2rem; }
+    .who-title { font-family:var(--serif); font-weight:900; font-size:clamp(1.8rem, 4vw, 2.8rem); text-align:center; color:var(--white); margin-bottom:0.8rem; }
+    .who-sub { text-align:center; color:var(--white-40); font-size:1rem; margin-bottom:4rem; }
+    .who-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+    .who-col h4 {
+      font-family:var(--serif); font-weight:900; font-size:1.1rem;
+      margin-bottom:1.5rem; padding-bottom:1rem;
+      border-bottom:1px solid var(--border);
+    }
+    .who-col.yes h4 { color:var(--gold-3); }
+    .who-col.no h4 { color:var(--white-40); }
+    .who-list { list-style:none; }
+    .who-list li {
+      display:flex; align-items:flex-start; gap:0.8rem;
+      padding:0.7rem 0; font-size:0.92rem; color:var(--white-70);
+      border-bottom:1px solid rgba(255,255,255,0.04);
+    }
+    .who-list li:last-child { border-bottom:none; }
+    .yes-icon { color:var(--gold-3); font-size:1rem; flex-shrink:0; margin-top:0.1rem; }
+    .no-icon { color:rgba(255,255,255,0.25); font-size:1rem; flex-shrink:0; margin-top:0.1rem; }
+
+    /* âââ COACH CREDIBILITY âââ */
+    .coach-bg { background:var(--bg-2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .coach-wrap { max-width:1100px; margin:0 auto; padding:6rem 2rem; }
+    .coach-grid { display:grid; grid-template-columns:1fr 1.5fr; gap:5rem; align-items:center; }
+    .coach-photo {
+      width:100%; aspect-ratio:3/4; background:var(--bg-3);
+      border:1px solid var(--border); border-radius:20px;
+      display:flex; flex-direction:column; align-items:center;
+      justify-content:center; gap:1rem; color:var(--white-40);
+      font-size:0.85rem; text-align:center; padding:2rem; position:relative;
+    }
+    .coach-photo-glow {
+      position:absolute; inset:-2px; border-radius:22px;
+      background:linear-gradient(135deg, var(--gold-2), transparent, var(--gold-2));
+      z-index:-1; opacity:0.3;
+    }
+    .coach-eyebrow { font-size:0.8rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-3); font-weight:700; margin-bottom:1rem; }
+    .coach-name { font-family:var(--serif); font-weight:900; font-size:2.5rem; color:var(--white); line-height:1.1; margin-bottom:0.5rem; }
+    .coach-title-tag { font-size:0.9rem; color:var(--gold-3); margin-bottom:2rem; }
+    .coach-stats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:2rem; }
+    .c-stat { padding:1rem 1.5rem; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:10px; position:relative; overflow:hidden; }
+    .c-stat::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(180deg, var(--gold-1), var(--gold-2)); }
+    .c-stat-num { font-family:var(--serif); font-weight:900; font-size:1.6rem; background:linear-gradient(135deg, var(--gold-1), var(--gold-2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .c-stat-label { font-size:0.78rem; color:var(--white-40); margin-top:0.2rem; }
+    .coach-bio { font-size:0.92rem; color:var(--white-70); line-height:1.9; margin-bottom:1.2rem; font-weight:300; }
+    .coach-quote {
+      padding:1.2rem 1.5rem; border-left:2px solid var(--gold-2);
+      background:rgba(200,146,26,0.05); border-radius:0 10px 10px 0;
+      font-family:var(--serif); font-style:italic;
+      color:var(--white); font-size:1rem; line-height:1.7; margin:1.5rem 0;
+    }
+
+    /* âââ TESTIMONIALS âââ */
+    .t-wrap { max-width:1100px; margin:0 auto; padding:6rem 2rem; }
+    .t-title { font-family:var(--serif); font-weight:900; font-size:clamp(2rem,4vw,3rem); text-align:center; color:var(--white); margin-bottom:0.8rem; }
+    .t-sub { text-align:center; color:var(--white-40); font-size:1rem; margin-bottom:4rem; }
+    .t-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .t-card {
+      background:rgba(255,255,255,0.02); border:1px solid var(--border);
+      border-radius:16px; padding:2rem; position:relative;
+      overflow:hidden; transition:all .35s;
+    }
+    .t-card::before {
+      content:'"'; position:absolute; top:-10px; left:20px;
+      font-family:var(--serif); font-size:8rem; color:var(--gold-2);
+      opacity:0.07; line-height:1; pointer-events:none;
+    }
+    .t-card:hover { border-color:var(--border-bright); background:rgba(200,146,26,0.03); transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+    .t-stars { color:var(--gold-3); font-size:0.88rem; margin-bottom:1rem; letter-spacing:0.1em; }
+    .t-text { font-size:0.9rem; color:var(--white-70); line-height:1.8; margin-bottom:1.5rem; font-weight:300; }
+    .t-author-row { display:flex; align-items:center; gap:0.8rem; }
+    .t-avatar { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg, var(--gold-2), var(--gold-4)); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:900; font-size:0.82rem; color:#06060a; flex-shrink:0; }
+    .t-name-text { font-weight:700; font-size:0.88rem; color:var(--white); }
+    .t-role-text { font-size:0.76rem; color:var(--white-40); }
+
+    /* âââ GUARANTEE âââ */
+    .guarantee-bg { background:var(--bg-2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .guarantee-inner { max-width:700px; margin:0 auto; padding:5rem 2rem; text-align:center; }
+    .guarantee-icon { font-size:3.5rem; margin-bottom:1.5rem; display:block; }
+    .guarantee-title { font-family:var(--serif); font-weight:900; font-size:2rem; color:var(--white); margin-bottom:1rem; }
+    .guarantee-text { font-size:1rem; color:var(--white-70); line-height:1.9; font-weight:300; }
+    .guarantee-badge {
+      display:inline-block; margin-top:2rem;
+      padding:1rem 2.5rem;
+      border:2px solid var(--border-bright);
+      border-radius:16px;
+      font-family:var(--serif); font-weight:900;
+      font-size:1.4rem;
+      background:linear-gradient(135deg, var(--gold-1), var(--gold-2));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    }
+
+    /* âââ FINAL CTA âââ */
+    .final-cta { position:relative; z-index:1; overflow:hidden; }
+    .final-cta-bg {
+      background:linear-gradient(135deg, #06060a 0%, #0d0d16 50%, #06060a 100%);
+      border-top:1px solid var(--border);
+    }
+    .final-inner { max-width:800px; margin:0 auto; padding:8rem 2rem; text-align:center; }
+    .final-eyebrow { font-size:0.8rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-3); font-weight:700; margin-bottom:1.5rem; }
+    .final-title {
+      font-family:var(--serif); font-weight:900;
+      font-size:clamp(2.2rem, 6vw, 4rem);
+      color:var(--white); line-height:1.1; margin-bottom:1.5rem; letter-spacing:-0.02em;
+    }
+    .final-deadline {
+      font-family:var(--serif); font-size:1.1rem; color:var(--gold-3);
+      margin-bottom:3rem; font-weight:700;
+    }
+    .final-list { list-style:none; max-width:500px; margin:0 auto 3rem; text-align:left; }
+    .final-list li { display:flex; align-items:center; gap:0.8rem; padding:0.7rem 0; font-size:0.95rem; color:var(--white-70); border-bottom:1px solid var(--border); }
+    .final-list li:last-child { border-bottom:none; }
+    .f-check { color:var(--gold-3); font-size:1rem; }
+    .final-ctas { display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.5rem; }
+    .final-note { font-size:0.82rem; color:var(--white-40); }
+
+    /* âââ FOOTER âââ */
+    footer { background:#030306; border-top:1px solid var(--border); padding:3rem 2rem; text-align:center; position:relative; z-index:1; }
+    .footer-logo { font-family:var(--serif); font-weight:900; font-size:1.3rem; background:linear-gradient(135deg,var(--gold-1),var(--gold-2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:1rem; }
+    .footer-nav { display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
+    .footer-nav a { color:var(--white-40); text-decoration:none; font-size:0.85rem; transition:color .3s; }
+    .footer-nav a:hover { color:var(--gold-3); }
+    .footer-copy { font-size:0.78rem; color:var(--white-40); }
+    .social-grid { display:flex; flex-direction:row; flex-wrap:wrap; gap:0.75rem; justify-content:center; margin:1.5rem 0; }
+    .social-btn {
+      display:flex; align-items:center; gap:0.55rem;
+      padding:0.55rem 1.1rem; border-radius:50px;
+      background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
+      color:var(--white-70); text-decoration:none; font-size:0.82rem;
+      transition:all .3s; white-space:nowrap;
+    }
+    .social-btn:hover { background:rgba(212,175,55,0.1); border-color:var(--border-bright); color:var(--white); }
+    .social-btn svg { flex-shrink:0; }
+    @media (max-width:640px) { .social-grid { flex-direction:column; align-items:center; } }
+
+    /* âââ SECTION BASE âââ */
+    section { position:relative; z-index:1; }
+    .section-eyebrow { font-size:0.8rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-3); font-weight:700; margin-bottom:1rem; text-align:center; }
+
+    /* âââ MOBILE âââ */
+    @media (max-width:768px) {
+      .nav-links { display:none; }
+      .pillars-grid { grid-template-columns:1fr; }
+      .moat-grid { grid-template-columns:repeat(2, 1fr); }
+      .who-grid { grid-template-columns:1fr; }
+      .coach-grid { grid-template-columns:1fr; gap:2rem; }
+      .t-grid { grid-template-columns:1fr; }
+      .pain-list { grid-template-columns:1fr; }
+      .coach-stats { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:480px) {
+      .moat-grid { grid-template-columns:1fr; }
+      .hero { padding:7rem 1.5rem 5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="orbs" aria-hidden="true">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+</div>
+
+<!-- Alert Bar -->
+<div class="alert-bar">
+  â° 4æ30æ¥ï¼ä¸é±ä¸ï¼æä¸ 8:00 ç·ä¸ç è¨æ â å®å¨åè²» Â· åé¡æé Â· <a href="https://cal.com/allen5280/1v1">ç«å³å ±å</a>
+</div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">æ¼¢å¿»æ½è½å¹è¨å­¸é¢</a>
+    <ul class="nav-links">
+      <li><a href="#pillars">æ ¸å¿åè½</a></li>
+      <li><a href="#moat">è­·åæ²³</a></li>
+      <li><a href="#coach">éæ¼Allen</a></li>
+      <li><a href="#testimonials">å­¸å¡è¦è­</a></li>
+      <li><a href="https://cal.com/allen5280/1v1" class="nav-cta">ç«å³å ±åç è¨æ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge reveal">
+    <span class="dot"></span>
+    â¦ æè¦ç³»çµ± Â· å¨å°ç¨å®¶
+  </div>
+  <h1 class="reveal reveal-delay-1">
+    è®ä½ çæ¥­å<br>
+    <span class="product-name">80% èªååéä½</span>
+  </h1>
+  <p class="hero-sub reveal reveal-delay-2">
+    <span class="gold" style="display:block; white-space:nowrap; font-family:var(--serif); font-weight:900; font-size:clamp(1rem, 5vw, 1.5rem); letter-spacing:0.02em; margin-bottom:0.5rem;">AI åå®å¼æ â ç²¾æºæäº¤ç³»çµ±â¢</span>
+    å¾éçäººå°æäº¤ï¼AI å¨ç¨è¼å©ãä½ åªéåééµæ±ºç­ï¼ç³»çµ±å¹«ä½ åå©ä¸çä¸åã
+  </p>
+  <div class="deadline-badge reveal reveal-delay-2">
+    ð¯ <strong>4æ30æ¥ï¼é±ä¸ï¼æä¸ 8:00</strong> Â· åè²»ç·ä¸ç è¨æ Â· å®æ´æè§£éå¥ç³»çµ±
+  </div>
+  <div class="hero-ctas reveal reveal-delay-3">
+    <a href="https://cal.com/allen5280/1v1" class="btn-primary">ç«å³å ±å 4/30 åè²»ç è¨æ</a>
+    <a href="https://cal.com/allen5280/1v1" class="btn-outline">é ç´ 1v1 åè²»è¨ºè©¢</a>
+  </div>
+  <div class="proof-row reveal">
+    <div class="proof-item">
+      <span class="proof-num">12+</span>
+      <span class="proof-label">12 å¹´é å°æ¥­ååéå¯¦æ°ç¶é©</span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-num">1,000+</span>
+      <span class="proof-label">ä½å­¸å¡è¦è­</span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-num">3-5x</span>
+      <span class="proof-label">æäº¤çæå</span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-num">80%</span>
+      <span class="proof-label">å·¥ä½èªåå</span>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- Pain Points -->
+<section class="pain-bg">
+  <div class="pain-wrap">
+    <div class="section-eyebrow reveal">ä½ æ¯å¦ä¹æéäºå°å¢ï¼</div>
+    <h2 class="pain-title reveal reveal-delay-1">åªåå·¥ä½å»æè¦º<span class="gold">æ°¸é å¨åå°è¸æ­¥</span></h2>
+    <p class="pain-sub reveal reveal-delay-2">éä¸æ¯ä½ çåé¡ââæ¯æ¹æ³åºäºåé¡</p>
+    <ul class="pain-list reveal reveal-delay-3">
+      <li class="pain-item">
+        <span class="pain-x">â</span>
+        <p>æ¯å¤©è±å¤§éæéæåè¿½å®¢æ¶ï¼ç²¾ç²åç¡ä½æ¥­ç¸¾æ²æé¡¯èæé·</p>
+      </li>
+      <li class="pain-item">
+        <span class="pain-x">â</span>
+        <p>åå®ä¸ç´æ¯èåå®ï¼ä¸ç¥éæéº¼æçºéç¼éçäººè®æç²¾æºæ½å®¢</p>
+      </li>
+      <li class="pain-item">
+        <span class="pain-x">â</span>
+        <p>åäºèªåªé«ï¼ä½ç²çµ²é·å¾æ¢ï¼æ´ä¸ç¥éæéº¼æç²çµ²è®ææäº¤</p>
+      </li>
+      <li class="pain-item">
+        <span class="pain-x">â</span>
+        <p>è½èªª AI å¾å²å®³ï¼ä½ä¸ç¥éæéº¼çæ­£ç¨å¨æ¥­åéç¼ä¸</p>
+      </li>
+      <li class="pain-item">
+        <span class="pain-x">â</span>
+        <p>æ¥­ç¸¾å¤©è±æ¿å¡æ­»ï¼é èªå·±çåéå¾é£åå¾ä¸çªç ´</p>
+      </li>
+      <li class="pain-item">
+        <span class="pain-x">â</span>
+        <p>æéå¨é½è±å¨å·¥ä½ä¸ï¼æ²æè¾¦æ³çæ­£å¯¦ç¾æéèªç±</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- Solution / 4 Pillars -->
+<section id="pillars">
+  <div class="solution-wrap">
+    <div class="solution-eyebrow reveal">ç³»çµ±æ§è§£æ³</div>
+    <h2 class="solution-title reveal reveal-delay-1">
+      4 å¤§æ ¸å¿åè½<br>
+      <span class="gold">å¾æ ¹æ¬æ¹è®ä½ çæ¥­åæ¨¡å¼</span>
+    </h2>
+    <p class="solution-sub reveal reveal-delay-2">ä¸æ¯çµ¦ä½ æ´å¤å·¥ä½ï¼èæ¯è®ç³»çµ±å¹«ä½ åå·¥ä½</p>
+    <div class="pillars-grid">
+      <div class="pillar-card reveal">
+        <div class="pillar-icon-wrap">ð¤</div>
+        <h3>éç¼èè·é²èªåå</h3>
+        <p>å®ä¸è¼¸å¥ï¼ç³»çµ±æçºèªåè¼¸åºãAI èªåè­å¥èéç¼éçåå®ï¼LINE æ©å¨äººèªååç´è·é²ï¼80% çéè¤æ§å·¥ä½é ç³»çµ±å®æãä½ åªéåééµçå¤æ·åæäº¤ã</p>
+        <div class="pillar-tags">
+          <span class="ptag">AIèªåéç¼</span>
+          <span class="ptag">LINEæ©å¨äºº</span>
+          <span class="ptag">24å°æéä½</span>
+        </div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-1">
+        <div class="pillar-icon-wrap">ð¡</div>
+        <h3>åäººåçèåå®ç²å</h3>
+        <p>AI å·¥å· + èªåªé«ç­ç¥ + åå®ç£éµä¸ä½ä¸é«ãå»ºç«ä½ çåäºº IPï¼è®ç²¾æºçæ½å¨å®¢æ¶ä¸»åé è¿ä½ ï¼èä¸æ¯ä½ å¤©å¤©è¿½èå¥äººè·ã</p>
+        <div class="pillar-tags">
+          <span class="ptag">å§å®¹AIçæ</span>
+          <span class="ptag">åå®ç£éµ</span>
+          <span class="ptag">ç§åæµé</span>
+        </div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-2">
+        <div class="pillar-icon-wrap">ð¯</div>
+        <h3>é·å®è AI æç·´ç³»çµ±</h3>
+        <p>å®æ´è©±è¡æ¨¡æ¿ + Jarvis AI å³æè¼å©ãæ¯ä¸åå°è©±å ´æ¯é½ææä½³åææ¹æ¡ï¼éå°é£é¡æ AI å³æçµ¦ä½ å»ºè­°ï¼æäº¤çæå 3-5 åã</p>
+        <div class="pillar-tags">
+          <span class="ptag">è©±è¡ç³»çµ±</span>
+          <span class="ptag">Jarvis AIæç·´</span>
+          <span class="ptag">å³æè¼å©</span>
+        </div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-3">
+        <div class="pillar-icon-wrap">ð</div>
+        <h3>æ¸æå½æ´èæè½åªå</h3>
+        <p>Notion + AI æè¦ + æè½è¿½è¹¤åè¡¨æ¿ãæ¯é±æ¸æ¥çå°åªäºè¡åç¢ççµæãåªäºä¸ç¢çãè®æ¸æèªªè©±ï¼æçºåªåï¼è¤å©æé·ã</p>
+        <div class="pillar-tags">
+          <span class="ptag">Notionæ´å</span>
+          <span class="ptag">æ¸æåæ</span>
+          <span class="ptag">æçºè¿­ä»£</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- 5 Moat -->
+<section id="moat" class="moat-bg">
+  <div class="moat-wrap">
+    <div class="section-eyebrow reveal">çºä»éº¼é¸æéå¥ç³»çµ±ï¼</div>
+    <h2 class="moat-title reveal reveal-delay-1">5 å¤§è­·åæ²³åªå¢</h2>
+    <p class="moat-sub reveal reveal-delay-2">å¸å ´ä¸ç AI å·¥å·èª²ç¨å¾å¤ï¼ä½è½æéäºåæ´åå¨ä¸èµ·çï¼åªæéè£¡</p>
+    <div class="moat-grid">
+      <div class="moat-card reveal">
+        <span class="moat-num">01</span>
+        <h4>AI æè¡æ´å</h4>
+        <p>æåæ²¿å·¥å·çå¯¦æ°æç¨ï¼ä¸åªæ¯çè«ï¼ç¶å¤©å¯è½å°</p>
+      </div>
+      <div class="moat-card reveal reveal-delay-1">
+        <span class="moat-num">02</span>
+        <h4>èªåªé«åäººåç</h4>
+        <p>æé ç²¾æºåªè³ªåå®å¼æçæ¹æ³è«å®æ´è¤è£½</p>
+      </div>
+      <div class="moat-card reveal reveal-delay-2">
+        <span class="moat-num">03</span>
+        <h4>é·å®æäº¤æè¡ï¼12å¹´é å°æ¥­ååéå¯¦æ°ï¼</h4>
+        <p>å¾å®ç·å·¥ç¨å¸«ï¼å°æ¥­åå°ç½ï¼å°é å°æ¥­åï¼å°é å°æ¸ç¾äººé·å®åéçæåè·¯å¾</p>
+      </div>
+      <div class="moat-card reveal reveal-delay-3">
+        <span class="moat-num">04</span>
+        <h4>å¤åè®ç¾ç­ç¥</h4>
+        <p>ç·ä¸äºæ¥­ãèª²ç¨ãçµç¹è¡é·ãè¯çè¡é·ãå¤åè®ç¾</p>
+      </div>
+      <div class="moat-card reveal">
+        <span class="moat-num">05</span>
+        <h4>åäººæäºæº«åº¦</h4>
+        <p>çå¯¦çæäºè¡é·åï¼è®å®¢æ¶èªåä½ ãé¸æä½ </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- Who Is This For -->
+<section>
+  <div class="who-wrap">
+    <div class="section-eyebrow reveal">é©åå°è±¡</div>
+    <h2 class="who-title reveal reveal-delay-1">éå¥ç³»çµ±<span class="gold">é©åä½ åï¼</span></h2>
+    <p class="who-sub reveal reveal-delay-2">ç¢ºèªä¸ä¸ï¼æä¸æµªè²»å½¼æ­¤çæé</p>
+    <div class="who-grid reveal">
+      <div class="who-col yes">
+        <h4>â¦ éå¸¸é©åä½ ï¼å¦æä½ æ¯...</h4>
+        <ul class="who-list">
+          <li><span class="yes-icon">â</span>ä¿éªæ¥­åæç´é·å¤¥ä¼´ï¼æ³çªç ´æ¥­ç¸¾å¤©è±æ¿</li>
+          <li><span class="yes-icon">â</span>ç·ä¸èª²ç¨è¬å¸«ï¼æ³å¢å ç²çµ²åèª²ç¨é·é</li>
+          <li><span class="yes-icon">â</span>èªç±å·¥ä½èï¼æ³ç©©å®å®¢æºä¸åé ä»ç´¹</li>
+          <li><span class="yes-icon">â</span>èé/ä¸»ç®¡ï¼æ³è®åéæ¥­ç¸¾èªååè¤è£½</li>
+          <li><span class="yes-icon">â</span>çµç¹é å°äººï¼æ³ç¨ç³»çµ±åä»£åäººè±éä¸»ç¾©</li>
+          <li><span class="yes-icon">â</span>å° AI å¥½å¥ï¼æ³çæ­£æå®ç¨å¨æ¥­åä¸è³ºé¢çäºº</li>
+        </ul>
+      </div>
+      <div class="who-col no">
+        <h4>â å¯è½ä¸é©åä½ ï¼å¦æä½ ...</h4>
+        <ul class="who-list">
+          <li><span class="no-icon">â</span>åªæ³å¿«éè´å¯ï¼ä¸æ³æå¥æéå­¸ç¿åå·è¡</li>
+          <li><span class="no-icon">â</span>æå¾é¶åªåå°±æçµæçé­æ³ç³»çµ±</li>
+          <li><span class="no-icon">â</span>ä¸é¡ææ¹è®ç¾æçå·¥ä½æ¹å¼åç¿æ£</li>
+          <li><span class="no-icon">â</span>å° AI å·¥å·ææ ¹æ¬æ§çææ¥æææ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- Coach -->
+<section id="coach" class="coach-bg">
+  <div class="coach-wrap">
+    <div class="coach-grid">
+      <div class="reveal">
+        <div class="coach-photo" style="overflow:hidden; display:flex; align-items:center; justify-content:center;">
+          <img src="allen.jpg" alt="Allen æç·´ï¼é³æç¶­ï¼" style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div style="display:none;flex-direction:column;align-items:center;justify-content:center;gap:0.8rem;color:var(--white-40);font-size:0.85rem;text-align:center;padding:2rem;width:100%;height:100%;">
+            <span style="font-size:3rem; opacity:0.3">ð¸</span>
+            <span>Allen æç·´ç§ç<br><small>è«æ¿æçºçå¯¦ç§ç</small></span>
+          </div>
+          <div class="coach-photo-glow"></div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="coach-eyebrow">ä½ çç³»çµ±è¨­è¨å¸«</div>
+        <h2 class="coach-name">Allen æç·´ï¼é³æç¶­ï¼</h2>
+        <p style="font-size:0.85rem; color:var(--gold-3); margin-bottom:0.3rem;">å¥½åèå­¸å¡æ±ç¨±ãæç¶­å¥ã</p>
+        <p class="coach-title-tag">æ¼¢å¿»æ½è½å¹è¨å­¸é¢ä¸»çäºº Â· AI Ã é·å® Ã åäººåç</p>
+        <div class="coach-stats">
+          <div class="c-stat">
+            <div class="c-stat-num">12+</div>
+            <div class="c-stat-label">å¹´é å°æ¥­ååéå¯¦æ°ç¶é©</div>
+          </div>
+          <div class="c-stat">
+            <div class="c-stat-num">1,000+</div>
+            <div class="c-stat-label">å¹è¨å­¸å¡</div>
+          </div>
+          <div class="c-stat">
+            <div class="c-stat-num">800è¬+</div>
+            <div class="c-stat-label">å¨ç¶²æµé</div>
+          </div>
+          <div class="c-stat">
+            <div class="c-stat-num">2,300+</div>
+            <div class="c-stat-label">å ´æ¼è¬å¹è¨å ´æ¬¡</div>
+          </div>
+        </div>
+        <p class="coach-bio">é«ä¸­èæ¥­èä¸æåå¤§å­¸ç ç©¶æï¼å¾ç©ºéç¹æ°éå£«å®éç¬¬ä¸åï¼å°å°ç£è¡çå¤§ç«åå·¥ç¨å¸«ï¼åå°ç¾å®å®æ¹ææè¬å¸«ââAllen æç·´ç¨æçå¯¦çäººçæäºè­æï¼ç³»çµ±åæ¹æ³ï¼å¯ä»¥è®ä»»ä½äººå¾é¶èµ°åé å³°ã</p>
+        <p class="coach-bio">ç¾å¨ï¼ä»æ 12 å¹´æ¿ç¸®æéå¥ AI åå®å¼æç³»çµ±ï¼è®ä½ ä¸éè¦èµ°ä»èµ°éçå½è·¯ï¼ç´æ¥ç«å¨ä»çè©èä¸ã</p>
+        <div class="coach-quote">
+          ãç³»çµ±æ¯åªåæ´éè¦ãæ²æç³»çµ±çåªåï¼åªæ¯å¨éè¤ååãæä¸æ¯ä¾è³£èª²ç¨çï¼æ¯ä¾å¹«ä½ å»ºç«ä¸å¥è®æ¥­åèªåéè½çç³»çµ±ãã
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- Testimonials -->
+<section id="testimonials">
+  <div class="t-wrap">
+    <div class="section-eyebrow reveal">çå¯¦å­¸å¡è²é³</div>
+    <h2 class="t-title reveal reveal-delay-1">ä»åçæ¥­ç¸¾ï¼èªªæä¸å</h2>
+    <p class="t-sub reveal reveal-delay-2">ä¾èªä¿éªãç´é·ãè¬å¸«ãåµæ¥­åè¡åæ¥­ççå¯¦åé¥</p>
+    <div class="t-grid">
+      <div class="t-card reveal">
+        <div class="t-stars">âââââ</div>
+        <p class="t-text">ãç¨äº AI åå®å¼æä¸åæï¼ç¾å¨æ¯é±æ 20-30 åç²¾æºæ½å®¢èªåé²ä¾è©¢åï¼æåªéè¦åä¸å°ä¸æäº¤å°±å¥½ãä»¥åä¸é±è± 30 å°æéç¼åå®ï¼ç¾å¨åªéè¦ 5 å°æï¼æ¥­ç¸¾åèç¿»äºå©åãã</p>
+        <div class="t-author-row">
+          <div class="t-avatar">è¬</div>
+          <div>
+            <div class="t-name-text">è¬å®å«</div>
+            <div class="t-role-text">ä¿éªæ¥­å Â· å°å</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card reveal reveal-delay-1">
+        <div class="t-stars">âââââ</div>
+        <p class="t-text">ãJarvis AI æç·´ç³»çµ±æ¬æè®æé©è±çé¨åãä»¥åéå°å®¢æ¶çåé½åé¡ä¸ç¥éæéº¼åï¼ç¾å¨ AI å³æçµ¦ææä½³è©±è¡ï¼æäº¤çå¾ 20% ç´æ¥æå° 55%ãéååè½æ¬èº«å°±å¼åç¥¨å¹äºãã</p>
+        <div class="t-author-row">
+          <div class="t-avatar">æ</div>
+          <div>
+            <div class="t-name-text">æå»ºå®</div>
+            <div class="t-role-text">ç´é·æ¥­åä¸»ç®¡ Â· å°ä¸­</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card reveal reveal-delay-2">
+        <div class="t-stars">âââââ</div>
+        <p class="t-text">ãLINE æ©å¨äººèªåè·é²ç³»çµ±å¹«æè§£æ±ºäºæçè¦çåé¡ââå®¢æ¶èªªè¦æ³æ³ï¼ä»¥å¾å°±åä¹è¯çµ¡ä¸ä¸ãç¾å¨ç³»çµ±èªåæ¯éå¹¾å¤©ç¼ä¸åå§å®¹çµ¦æ½å®¢ï¼æ 30% çå·åå®é½è¢«åééæ°æäº¤ãã</p>
+        <div class="t-author-row">
+          <div class="t-avatar">é³</div>
+          <div>
+            <div class="t-name-text">é³æç©</div>
+            <div class="t-role-text">ç·ä¸èª²ç¨è¬å¸« Â· æ°å</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-stars">âââââ</div>
+        <p class="t-text">ãåäººåçé£ä¸å¡è®æå®å¨çå°ä¸åçä¸çãä¸åæåæç IG åªæ 800 äººè¿½è¹¤ï¼ç¨äº Allen ç AI å§å®¹ç³»çµ±å¾ï¼ç¾å¨çªç ´ 12,000ï¼æ¯å¤©é½ææ°è©¢åé²ä¾ï¼æ ¹æ¬ä¾ä¸ååãã</p>
+        <div class="t-author-row">
+          <div class="t-avatar">é»</div>
+          <div>
+            <div class="t-name-text">é»ç¾ç</div>
+            <div class="t-role-text">ç¾å®¹é¡§å Â· é«é</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card reveal reveal-delay-1">
+        <div class="t-stars">âââââ</div>
+        <p class="t-text">ãææ¯çµç¹åç´é·ï¼æå¤§åé¡æ¯è¤è£½ä¸å¥½ãå­¸å®åéé å°å AI ç³»çµ±å¾ï¼æææ´å¥ SOP æ¨¡æ¿åï¼ä¸ç·ç´æ¥å¥ç¨ï¼çµç¹æ´é«æ¥­ç¸¾å¨å©åå­£åº¦å§æé·äº 180%ï¼éææ¯çæ­£çæ§æ¡¿ãã</p>
+        <div class="t-author-row">
+          <div class="t-avatar">å³</div>
+          <div>
+            <div class="t-name-text">å³å¿æ</div>
+            <div class="t-role-text">ç´é·çµç¹é å°äºº Â· å°å</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card reveal reveal-delay-2">
+        <div class="t-stars">âââââ</div>
+        <p class="t-text">ã4/30 ç è¨æè®æå¨å©å°æå§çæ¸æ¥äºæ´å¥ç³»çµ±çéè¼¯ãAllen ä¸èç§ï¼ççå®æ´æè§£çµ¦ä½ çãçå®ä¹å¾æç¶å ´æ±ºå®è³¼è²·ï¼ä¸åæå¾åé ­çï¼æ¯æéå¹¾å¹´åçææ­£ç¢ºçæ±ºå®ãã</p>
+        <div class="t-author-row">
+          <div class="t-avatar">æ</div>
+          <div>
+            <div class="t-name-text">æå å»·</div>
+            <div class="t-role-text">åµæ¥­è Â· æ¡å</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- Guarantee -->
+<section class="guarantee-bg">
+  <div class="guarantee-inner">
+    <span class="guarantee-icon reveal">ð¡ï¸</span>
+    <h2 class="guarantee-title reveal reveal-delay-1">30 å¤©ç¡æ¢ä»¶éæ¬¾ä¿è­</h2>
+    <p class="guarantee-text reveal reveal-delay-2">
+      è³¼è²·å¾ 30 å¤©å§ï¼å¦æä½ èªçå·è¡ä½æ²æçå°ä»»ä½æ¹è®ï¼æåæä¾å¨é¡éæ¬¾ï¼ä¸éè¦ä»»ä½çç±ã<br><br>
+      æåå°éå¥ç³»çµ±æè¶³å¤ çä¿¡å¿ï¼æä»¥ææ¢åéæ¨£çæ¿è«¾ãä½ å¯ä¸çé¢¨éªæ¯ï¼é¯éæ¹è®æ¥­ç¸¾çæ©æã
+    </p>
+    <div class="guarantee-badge reveal reveal-delay-3">30å¤© Â· å¨é¡éæ¬¾ Â· é¶é¢¨éª</div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- Final CTA -->
+<section class="final-cta final-cta-bg">
+  <div class="final-inner">
+    <div class="final-eyebrow reveal">ç¾å¨å°±è¡å</div>
+    <h2 class="final-title reveal reveal-delay-1">
+      ä½ çæ¥­å<br>
+      <span class="gold">å¼å¾ä¸å¥æ´å¥½çç³»çµ±</span>
+    </h2>
+    <p class="final-deadline reveal reveal-delay-2">
+      ð¯ 4æ30æ¥ï¼é±ä¸ï¼æä¸ 8:00 Â· åè²»ç·ä¸ç è¨æ<br>
+      ç¾å ´å®æ´æè§£æ´å¥ç³»çµ± Â· å³å»ååºæ±ºç­
+    </p>
+    <ul class="final-list reveal reveal-delay-2">
+      <li><span class="f-check">â</span>å®æ´ AI åå®å¼æç³»çµ±æ¡æ¶</li>
+      <li><span class="f-check">â</span>å¯¦æ°æ¡ä¾å®æ´æè§£</li>
+      <li><span class="f-check">â</span>Jarvis AI æç·´ç³»çµ±å±ç¤º</li>
+      <li><span class="f-check">â</span>æ¸æ¥çè¡åè·¯å¾è¦å</li>
+      <li><span class="f-check">â</span>éæåªæ æ¹æ¡å¬å</li>
+    </ul>
+    <div class="final-ctas reveal reveal-delay-3">
+      <a href="https://cal.com/allen5280/1v1" class="btn-primary">ç«å³å ±å 4/30 åè²»ç è¨æ</a>
+      <a href="https://cal.com/allen5280/1v1" class="btn-outline">é ç´ 1v1 åè²»è¨ºè©¢</a>
+    </div>
+    <p class="final-note reveal">å®å¨åè²» Â· ç¡ä»»ä½è³¼è²·å£å Â· ç è¨æå¾èªå·±æ±ºå®</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">æ¼¢å¿»æ½è½å¹è¨å­¸é¢</div>
+  <div class="footer-nav">
+    <a href="index.html">å®æ¹ç¶²ç«é¦é </a>
+    <a href="#pillars">4å¤§åè½</a>
+    <a href="#coach">éæ¼Allen</a>
+    <a href="https://cal.com/allen5280/1v1">åè²»è«®è©¢</a>
+  </div>
+  <div class="social-grid">
+    <!-- Skool -->
+    <a href="#" class="social-btn" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="0" fill="#f0eeeb"/><text x="1" y="82" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="78" fill="#1B3FAB">s</text><text x="50" y="82" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="78" fill="#C93928">k</text></svg>
+      Skool ç¤¾ç¾¤
+    </a>
+    <!-- Instagram -->
+    <a href="#" class="social-btn" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <defs>
+          <radialGradient id="ig-s" cx="30%" cy="107%" r="150%">
+            <stop offset="0%" stop-color="#fdf497"/>
+            <stop offset="5%" stop-color="#fdf497"/>
+            <stop offset="45%" stop-color="#fd5949"/>
+            <stop offset="60%" stop-color="#d6249f"/>
+            <stop offset="90%" stop-color="#285AEB"/>
+          </radialGradient>
+        </defs>
+        <rect width="24" height="24" rx="5" fill="url(#ig-s)"/>
+        <circle cx="12" cy="12" r="3.5" stroke="white" stroke-width="1.8" fill="none"/>
+        <circle cx="17" cy="7" r="1" fill="white"/>
+        <rect x="3.5" y="3.5" width="17" height="17" rx="4" stroke="white" stroke-width="1.5" fill="none"/>
+      </svg>
+      Instagram
+    </a>
+    <!-- Facebook -->
+    <a href="#" class="social-btn" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <rect width="24" height="24" rx="5" fill="#1877F2"/>
+        <path d="M15.5 8H13.5C13.22 8 13 8.22 13 8.5V11H15.5L15 13.5H13V20H10.5V13.5H8.5V11H10.5V8.5C10.5 6.57 12.07 5 14 5H15.5V8Z" fill="white"/>
+      </svg>
+      Facebook
+    </a>
+    <!-- TikTok -->
+    <a href="#" class="social-btn" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <rect width="24" height="24" rx="5" fill="#000000"/>
+        <path d="M16 5.5c.69.93 1.74 1.5 2.9 1.5v2.5c-.98 0-1.9-.3-2.65-.82V14a4.25 4.25 0 11-4.25-4.25c.14 0 .28.01.41.02v2.56a1.75 1.75 0 101.59 1.73V5.5H16z" fill="white"/>
+      </svg>
+      TikTok
+    </a>
+    <!-- YouTube -->
+    <a href="#" class="social-btn" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <rect width="24" height="24" rx="5" fill="#FF0000"/>
+        <path d="M20.54 8.04a2 2 0 00-1.4-1.42C17.76 6.25 12 6.25 12 6.25s-5.76 0-7.14.37a2 2 0 00-1.4 1.42 20.83 20.83 0 000 7.92 2 2 0 001.4 1.42C6.24 17.75 12 17.75 12 17.75s5.76 0 7.14-.37a2 2 0 001.4-1.42 20.83 20.83 0 000-7.92zM10 14.25v-4.5L14.5 12 10 14.25z" fill="white"/>
+      </svg>
+      YouTube
+    </a>
+    <!-- LINE -->
+    <a href="#" class="social-btn" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <rect width="24" height="24" rx="5" fill="#00B900"/>
+        <path d="M12 4C7.58 4 4 7.03 4 10.77c0 2.36 1.57 4.43 3.96 5.65-.17.6-.63 2.16-.72 2.5-.11.41.15.41.32.3.13-.09 2.06-1.4 2.9-1.96.5.07 1.01.1 1.54.1 4.42 0 8-3.03 8-6.77C20 7.03 16.42 4 12 4zm-2.8 8.5H7.5V8.5h.9v3.1h.8v.9zm1.4 0h-.9V8.5h.9v4zm3.5 0h-.9l-1.5-2.6v2.6h-.9V8.5h.9l1.5 2.6V8.5h.9v4zm2.2-.9h-1.5v-.9h1.5v-.8h-1.5V9.4h1.5v-.9h-2.4V13h2.4v-.9z" fill="white"/>
+      </svg>
+      LINE
+    </a>
+    <!-- WhatsApp -->
+    <a href="#" class="social-btn" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <rect width="24" height="24" rx="5" fill="#25D366"/>
+        <path d="M12 4a8 8 0 00-6.88 12.06L4 20l4.06-1.07A8 8 0 1012 4zm0 14.5a6.48 6.48 0 01-3.32-.92l-.24-.14-2.41.63.65-2.36-.16-.25A6.5 6.5 0 1112 18.5zm3.56-4.87c-.19-.1-1.14-.56-1.32-.63-.17-.07-.3-.1-.43.1-.13.2-.5.63-.62.76-.11.13-.23.15-.42.05a5.27 5.27 0 01-1.55-.96 5.82 5.82 0 01-1.07-1.34c-.11-.2-.01-.3.09-.4l.28-.33c.09-.11.12-.19.18-.32.06-.13.03-.25-.02-.35-.05-.1-.43-1.04-.59-1.42-.16-.37-.32-.32-.43-.33h-.37c-.13 0-.34.05-.52.25-.17.2-.67.66-.67 1.6s.69 1.86.79 1.99c.1.13 1.36 2.08 3.3 2.91.46.2.82.32 1.1.41.46.15.88.13 1.22.08.37-.06 1.14-.47 1.3-.92.16-.46.16-.85.11-.93-.05-.08-.18-.13-.38-.23z" fill="white"/>
+      </svg>
+      WhatsApp
+    </a>
+  </div>
+  <p class="footer-copy">Â© 2026 æ¼¢å¿»æ½è½å¹è¨å­¸é¢ Â· Allen æç·´ Â· AI åå®å¼æ Ã ç²¾æºæäº¤ç³»çµ±â¢ çæ¬ææ</p>
+</footer>
+
+<script>
+  // Reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.borderBottomColor = window.scrollY > 50 ? 'rgba(212,175,55,0.2)' : 'rgba(212,175,55,0.12)';
+  });
+
+  // Countdown timer to 4/30
+  function updateCountdown() {
+    const target = new Date('2026-04-30T20:00:00+08:00');
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) return;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+    const el = document.querySelector('.alert-bar');
+    if (el && days >= 0) {
+      el.innerHTML = `â° è·é¢ 4/30 åè²»ç è¨æéæ <strong>${days}å¤© ${hours}æ ${mins}å ${secs}ç§</strong> Â· åé¡æé Â· <a href="https://cal.com/allen5280/1v1" style="color:#06060a;font-weight:900;text-decoration:underline">ç«å³å ±å</a>`;
+    }
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
